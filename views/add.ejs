@@ -33,7 +33,11 @@
     <div>
         <label for="helptagsid">Tags</label>
         <input onchange="addTagToArray()" type="text" placeholder="e.g. POST" name="helptags" id="helptagsid"/>
-        <div id="helptaglistid"></div>
+        <div>ADD TAG</div>
+        <ul id="helptagslistid"></ul>
+    </div>
+    <div>
+        <input type="hidden" name="tags" id="tagsid"/>
     </div>
     <div>
         <button type="submit">SUBMIT</button>
