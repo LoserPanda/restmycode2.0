@@ -30,6 +30,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/data', (req, res) => {
+    console.log(req.body);
     const data = new Data(req.body);
     data.save()
         .then(data => {
