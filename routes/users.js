@@ -16,7 +16,7 @@ mongoose.connect(db, {useNewUrlParser: true}).then(() => {
 
 //TODO put, get
 router.get('/', function (req, res, next) {
-    res.send('respond with a resource');
+    res.send('respond with a resource hee');
 });
 
 router.post('/', (req, res) => {
