@@ -14,7 +14,6 @@ mongoose.connect(db, {useNewUrlParser: true}).then(() => {
         console.log('Can not connect to the database' + err)
     });
 
-//TODO put, get
 router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
