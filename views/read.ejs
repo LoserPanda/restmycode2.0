@@ -10,15 +10,15 @@
             if (id != null) {
                 let uri = '/users/' + id;
                 console.log(uri);
-                $.getJSON(uri, function (data) {
-                    $("#titleid").val(data.title);
-                    $("#descriptid").val(data.descript);
-                    $("#langid").val(data.lang);
-                    $("#codeid").val(data.code);
-                    $("#authorid").val(data.author);
-                    $("#tagsid").val(data.tags);
-                    console.log(data);
-                });
+                // $.getJSON(uri, function (data) {
+                //     $("#titleid").val(data.title);
+                //     $("#descriptid").val(data.descript);
+                //     $("#langid").val(data.lang);
+                //     $("#codeid").val(data.code);
+                //     $("#authorid").val(data.author);
+                //     $("#tagsid").val(data.tags);
+                //     console.log(data);
+                // });
                 localStorage.removeItem("id");
             }
         })</script>
