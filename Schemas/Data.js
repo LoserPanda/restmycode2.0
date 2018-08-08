@@ -17,10 +17,9 @@ var Data = new Schema({
     comments: {
         type: [{
             author: {type: Schema.Types.ObjectId, ref: 'User'},
-            comment: String
-        }]
+            comment: {type: Schema.Types.ObjectId, ref: 'Comment'}
+        }],
     }
-
 },{
     collection: 'data'
 });
