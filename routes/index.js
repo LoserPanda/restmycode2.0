@@ -15,7 +15,7 @@ router.get('/listaus', function(req, res, next) {
 });
 
 router.get('/update', function(req, res, next) {
-    res.render('update', { title: 'RestMyCode_2.0' });
+    res.render('update', { title: 'RestMyCode_2.0', id: req.query.id});
 });
 
 router.get('/read', function(req, res, next) {
