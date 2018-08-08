@@ -41,3 +41,16 @@ thead {
 .sortbutton {
   background-color: white;
 }
+
+#readtable * {
+  background-color: white;
+  border: none;
+}
+
+.readtableleft {
+  text-align: right;
+}
+
+.readtableright {
+  text-align: left;
+}
