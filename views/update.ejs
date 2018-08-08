@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="/javascripts/add.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script>$(function () {
+        let uri = '/users/5b6a971d85894644414331c9';
+            $.getJSON(uri,{
+                titleid: ,
+                tagmode: "any",
+                format: "json"
+            }).done(function (data) {
+                console.log(data);
+            });
+        })</script>
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Add Your Code Page</p>
+<form action="/users/data" method="POST">
+    <div>
+        <label for="titleid">Title</label>
+        <input type="text" placeholder="e.g. HelloWorld" name="title" id="titleid"/>
+    </div>
+    <div>
+        <label for="descriptid">Description</label>
+        <input type="text" placeholder="e.g. This code does it all." name="descript" id="descriptid"/>
+    </div>
+    <div>
+        <label for="langid">Programming language</label>
+        <input type="text" placeholder="e.g. Java" name="lang" id="langid"/>
+    </div>
+    <div>
+        <label for="codeid">Code</label>
+        <textarea placeholder="e.g. System.out.print('Hello World!');" name="code" id="codeid"></textarea>
+    </div>
+    <div>
+        <label for="authorid">Author</label>
+        <input type="text" placeholder="e.g. EvilUser82" name="author" id="authorid"/>
+    </div>
+    <div>
+        <label for="helptagsid">Tags</label>
+        <input onchange="addTagToArray()" type="text" placeholder="e.g. POST" name="helptags" id="helptagsid"/>
+        <div>ADD TAG</div>
+        <ul id="helptagslistid"></ul>
+    </div>
+    <div>
+        <input type="hidden" name="tags" id="tagsid"/>
+    </div>
+    <div>
+        <button type="submit">SUBMIT</button>
+    </div>
+</form>
+</body>
+</html>

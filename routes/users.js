@@ -22,6 +22,14 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/:id', function (req, res, next) {
+
+    Data.findOneById(req.params.id).toArray().then(function (err, data) {
+        // console.log(data);
+        res.json(data);
+    });
+});
+
 router.post('/', (req, res) => {
     const user = new User(req.body);
     user.save()
