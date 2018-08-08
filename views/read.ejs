@@ -3,6 +3,25 @@
 <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/add.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script>$(function () {
+            var id = JSON.parse(localStorage.getItem("id"));
+            if (id != null) {
+                let uri = '/users/' + JSON.parse(localStorage.getItem("id"));
+                console.log(uri);
+                $.getJSON(uri, function (data) {
+                    $("#titleid").val(data.title);
+                    $("#descriptid").val(data.descript);
+                    $("#langid").val(data.lang);
+                    $("#codeid").val(data.code);
+                    $("#authorid").val(data.author);
+                    $("#tagsid").val(data.tags);
+                    console.log(data);
+                });
+                localStorage.removeItem("id");
+            }
+        })</script>
 </head>
 <body>
 <h1><%= title %></h1>
