@@ -15,7 +15,10 @@ mongoose.connect(db, {useNewUrlParser: true}).then(() => {
     });
 
 router.get('/', function (req, res, next) {
-    res.send('respond with a resource');
+    Data.find().sort({title: 'asc'}).exec(function (err, data) {
+        // console.log(data);
+        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+    });
 });
 
 router.post('/', (req, res) => {

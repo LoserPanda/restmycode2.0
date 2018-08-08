@@ -10,4 +10,8 @@ router.get('/add', function(req, res, next) {
     res.render('add', { title: 'RestMyCode_2.0' });
 });
 
+router.get('/listaus', function(req, res, next) {
+    res.render('listaus', { title: 'RestMyCode_2.0' });
+});
+
 module.exports = router;
