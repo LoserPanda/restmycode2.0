@@ -3,6 +3,8 @@
 <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/add.js"></script>
 </head>
 <body>
 <h1><%= title %></h1>
@@ -31,8 +33,12 @@
         <th><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></th>
         <th>----</th>
         <th><a href="/read"><img src="/images/read.png" alt="READ"></a></th>
-        <th><a href="/update"><img src="/images/edit.png" alt="EDIT"></a></th>
-        <th><a href="/delete"><img src="/images/delete.png" alt="DELETE"></a></th>
+        <!--<th><button onclick=sendUpdate('<%= data[i]._id%>')><img src="/images/edit.png" alt="EDIT"></button></th>-->
+        <!--<th><form action="/update"><button onclick="sendUpdate(<%= data[i]._id%>)"><img src="/images/edit.png" alt="EDIT"><input type="hidden" value=<%= data[i]._id%> name="id"></button></form></th>-->
+        <!--<th><a ><form action="/update"><button><img src="/images/edit.png" alt="EDIT"><input type="hidden" value=<%= data[i]._id%> name="id"></button></form> </a></th>-->
+        <th><a href="/update"><img src="/images/edit.png" alt="EDIT" onclick=setIdToLocalStorage('<%= data[i]._id%>')></a></th>
+        <!--<th><a href="/update"><img src="/images/edit.png" alt="EDIT"></a></th>-->
+        <th><a href="/delete"><img src="/images/delete.png" alt="DELETE" ></a></th>
     </tr>
     <% } %>
     </tbody>

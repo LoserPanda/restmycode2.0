@@ -6,8 +6,11 @@
     <script src="/javascripts/add.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script>$(function () {
-        let uri = '/users/5b6a971d85894644414331c9';
-            $.getJSON(uri,function (data) {
+        var id = JSON.parse(localStorage.getItem("id"));
+        if (id != null) {
+            let uri = '/users/' + JSON.parse(localStorage.getItem("id"));
+            console.log(uri);
+            $.getJSON(uri, function (data) {
                 $("#titleid").val(data.title);
                 $("#descriptid").val(data.descript);
                 $("#langid").val(data.lang);
@@ -16,6 +19,8 @@
                 $("#tagsid").val(data.tags);
                 console.log(data);
             });
+            localStorage.removeItem("id");
+        }
         })</script>
 </head>
 <body>

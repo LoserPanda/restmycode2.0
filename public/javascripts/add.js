@@ -9,3 +9,7 @@ function addTagToArray() {
     $('#tagsid').val(tagArray);
     $('#helptagsid').val('');
 }
+
+function setIdToLocalStorage(id){
+    localStorage.setItem("id",JSON.stringify(id));
+}
