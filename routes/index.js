@@ -14,4 +14,10 @@ router.get('/listaus', function(req, res, next) {
     res.render('listaus', { title: 'RestMyCode_2.0' });
 });
 
+router.get('/update', function(req, res, next) {
+    res.render('update', { title: 'RestMyCode_2.0' });
+});
+
+
+
 module.exports = router;
