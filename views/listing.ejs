@@ -3,24 +3,12 @@
 <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="/javascripts/listing.js"></script>
 </head>
 <body>
 <h1><%= title %></h1>
 <p>Code Listing Page</p>
-<a id="datedescid" href='http://localhost:3000/users/datedesc'><img src="/images/switch.png" alt="READ"></a>
-<a id="dateascid" href='http://localhost:3000/users/dateasc'><img src="/images/switch.png" alt="READ"></a>
-<!--<button type="button" onclick="window.location.href='http://localhost:3000/users/datedesc'">SORT DESC</button>-->
-<!--<button type="button" onclick="window.location.href='http://localhost:3000/users/dateasc'">SORT ASC</button>-->
-<!--<script>-->
-    <!--$(document).ready(function () {-->
-        <!--$('.datesortid').click(function () {-->
-            <!--$('.datesortid').text() == "HIDE CHUCK NORRIS" ?-->
-                <!--$('.datesortid').text("GENERATE CHUCK NORRIS") && $('img').hide() :-->
-                <!--$('.datesortid').text("HIDE CHUCK NORRIS") && $('img').show();-->
-        <!--});-->
-<!--</script>-->
+<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/datedesc'"><img src="/images/sortdesc.png" alt="SWITCH"></button>
+<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/dateasc'"><img src="/images/sortasc.png" alt="SWITCH"></button>
 <table>
     <thead>
     <tr>

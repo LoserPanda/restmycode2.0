@@ -37,3 +37,7 @@ tr:nth-child(even) {
 thead {
   background-color: antiquewhite;
 }
+
+.sortbutton {
+  background-color: white;
+}
