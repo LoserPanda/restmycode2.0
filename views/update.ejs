@@ -7,11 +7,13 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script>$(function () {
         let uri = '/users/5b6a971d85894644414331c9';
-            $.getJSON(uri,{
-                titleid: ,
-                tagmode: "any",
-                format: "json"
-            }).done(function (data) {
+            $.getJSON(uri,function (data) {
+                $("#titleid").val(data.title);
+                $("#descriptid").val(data.descript);
+                $("#langid").val(data.lang);
+                $("#codeid").val(data.code);
+                $("#authorid").val(data.author);
+                $("#tagsid").val(data.tags);
                 console.log(data);
             });
         })</script>

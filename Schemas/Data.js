@@ -13,6 +13,7 @@ var Data = new Schema({
     tags: [String],
     score: Number,
     code: String,
+    author: String,
     comments: {
         type: [{
             author: {type: Schema.Types.ObjectId, ref: 'User'},

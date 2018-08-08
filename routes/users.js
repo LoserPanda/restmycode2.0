@@ -22,10 +22,9 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/:id', function (req, res, next) {
-
-    Data.findOneById(req.params.id).toArray().then(function (err, data) {
-        // console.log(data);
+router.get('/:id', function (req, res) {
+    Data.findById(req.params.id,function (err, data) {
+        console.log("Jee");
         res.json(data);
     });
 });
