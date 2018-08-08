@@ -14,9 +14,12 @@ mongoose.connect(db, {useNewUrlParser: true}).then(() => {
         console.log('Can not connect to the database' + err)
     });
 
-//TODO put, get
 router.get('/', function (req, res, next) {
-    res.send('respond with a resource hee');
+
+    Data.find().sort({title: 'asc'}).exec(function (err, data) {
+        // console.log(data);
+        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+    });
 });
 
 router.post('/', (req, res) => {
@@ -31,6 +34,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/data', (req, res) => {
+    console.log(req.body);
     const data = new Data(req.body);
     data.save()
         .then(data => {

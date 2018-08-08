@@ -1,8 +1,20 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  border: dotted blue 1px;
+  margin: 5px;
+  padding: 5px;
 }
 
-a {
-  color: #00B7FF;
+textarea {
+  width: 300px;
+  height: 200px;
+}
+
+label {
+  text-align: right;
+  display: inline-block;
+  width: 100px;
+}
+
+ul {
+  list-style-type: none;
 }
