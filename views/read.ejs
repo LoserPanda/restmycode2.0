@@ -11,12 +11,13 @@
                 let uri = '/users/' + id;
                 console.log(uri);
                 $.getJSON(uri, function (data) {
-                    $("#titleid").val(data.title);
-                    $("#descriptid").val(data.descript);
-                    $("#langid").val(data.lang);
-                    $("#codeid").val(data.code);
-                    $("#authorid").val(data.author);
-                    $("#tagsid").val(data.tags);
+                    $("#readtitleid").text(data.title);
+                    $("#readdescriptid").text(data.descript);
+                    $("#readlangid").text(data.lang);
+                    $("#readcodeid").text(data.code);
+                    $("#readauthorid").text(data.author);
+                    $("#readtagsid").text(data.tags);
+                    $("#readdateid").text(data.date);
                     console.log(data);
                 });
                 localStorage.removeItem("id");
@@ -26,5 +27,14 @@
 <body>
 <h1><%= title %></h1>
 <p>Read Page</p>
+<table id="readcontainer">
+    <tr><th>Title</th><th><h2 id="readtitleid"></h2></th></tr>
+    <tr><th>Description</th><th><p id="readdescriptid"></p></th></tr>
+    <tr><th>Language</th><th><p id="readlangid"></p></th></tr>
+    <tr><th>Author</th><th><p id="readauthorid"></p></th></tr>
+    <tr><th>Code</th><th><p id="readcodeid"></p></th></tr>
+    <tr><th>Tags</th><th><p id="readtagsid"></p></th></tr>
+    <tr><th>Date</th><th><p id="readdateid"></p></th></tr>
+</table>
 </body>
 </html>

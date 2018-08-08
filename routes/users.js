@@ -37,7 +37,6 @@ router.get('/datedesc', function (req, res, next) {
     });
 });
 
-
 router.get('/:id', function (req, res) {
     Data.findById(req.params.id,function (err, data) {
         res.json(data);
