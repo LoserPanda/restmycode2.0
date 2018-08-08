@@ -3,11 +3,44 @@
 <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/add.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+    <script>$(function () {
+            var id = JSON.parse(localStorage.getItem("id"));
+            if (id != null) {
+                let uri = '/users/' + id;
+                console.log(uri);
+                $.getJSON(uri, function (data) {
+                    $("#deletetitleid").text(data.title);
+                    $("#deletedescriptid").text(data.descript);
+                    $("#deletelangid").text(data.lang);
+                    $("#deletecodeid").text(data.code);
+                    $("#deleteauthorid").text(data.author);
+                    $("#deletetagsid").text(data.tags);
+                    $("#deletedateid").text(data.date);
+                    console.log(data);
+                });
+            }
+        })</script>
 </head>
 <body>
 <header>
     <% include partials/header %>
 </header>
-<p>Delete Page</p>
+<p>Are you sure you wan't to delete this post?</p>
+<button id="cancel" onclick="window.location.href='http://localhost:3000/users'">Cancel</button>
+<button id="deletedata" >Delete</button>
+
+<table id="readtable">
+    <tr><th class="readtableleft">Title:</th><th class="readtableright"><h2 id="deletetitleid"></h2></th></tr>
+    <tr><th class="readtableleft">Description:</th><th class="readtableright"><p id="deletedescriptid"></p></th></tr>
+    <tr><th class="readtableleft">Language:</th><th class="readtableright"><p id="deletelangid"></p></th></tr>
+    <tr><th class="readtableleft">Author:</th><th class="readtableright"><p id="deleteauthorid"></p></th></tr>
+    <tr><th class="readtableleft">Code:</th><th class="readtableright"><p id="deletecodeid"></p></th></tr>
+    <tr><th class="readtableleft">Tags:</th><th class="readtableright"><p id="deletetagsid"></p></th></tr>
+    <tr><th class="readtableleft">Date:</th><th class="readtableright"><p id="deletedateid"></p></th></tr>
+</table>
+
 </body>
 </html>
