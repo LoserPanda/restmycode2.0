@@ -9,7 +9,9 @@
 <body>
 <h1><%= title %></h1>
 <p>Code Listing Page</p>
-<table class="quotes">
+<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/datedesc'"><img src="/images/sortdesc.png" alt="SWITCH"></button>
+<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/dateasc'"><img src="/images/sortasc.png" alt="SWITCH"></button>
+<table>
     <thead>
     <tr>
         <th>TITLE</th>
@@ -30,7 +32,8 @@
         <th><%= data[i].descript %></th>
         <th><%= data[i].lang %></th>
         <th><%= data[i].author %></th>
-        <th><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></th>
+        <!--<th><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></th>-->
+        <th><%= data[i].date %></th>
         <th>----</th>
         <th><a href="/read"><img src="/images/read.png" alt="READ"></a></th>
         <!--<th><button onclick=sendUpdate('<%= data[i]._id%>')><img src="/images/edit.png" alt="EDIT"></button></th>-->

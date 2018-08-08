@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var Data = new Schema({
-    userId: {type: Schema.Types.ObjectId, ref: 'User'},
     title: String,
     descript: String,
     lang: String,
@@ -13,14 +12,7 @@ var Data = new Schema({
     tags: [String],
     score: Number,
     code: String,
-    author: String,
-    comments: {
-        type: [{
-            author: {type: Schema.Types.ObjectId, ref: 'User'},
-            comment: String
-        }]
-    }
-
+    author: String
 },{
     collection: 'data'
 });
