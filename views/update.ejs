@@ -18,8 +18,10 @@
                 $("#authorid").val(data.author);
                 $("#tagsid").val(data.tags);
                 console.log(data);
-                var info = data.id;
+                var info = data._id;
                 url = "/users/update/data/" + info;
+                $("#formid").attr('action',url);
+                console.log("Formin action: " + $("#formid").attr('action'));
             });
             localStorage.removeItem("id");
         }
@@ -28,7 +30,7 @@
 <body>
 <h1><%= title %></h1>
 <p>Add Your Code Page</p>
-<form action='url' method="POST">
+<form  method="POST" id="formid">
     <div>
         <label for="titleid">Title</label>
         <input type="text" placeholder="e.g. HelloWorld" name="title" id="titleid"/>

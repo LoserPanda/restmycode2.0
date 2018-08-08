@@ -69,18 +69,24 @@ router.post('/data', (req, res) => {
 // {"userId":"5b6991df4315dc21ac3e13e1","title":"Syuuuggyhgjhing","descript":"String","lang":"String","tags":["jotain1", "jotain2"],"score": 2,"code":"String","comments":[{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"},{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"}]}
 
 //TODO kaikki muokkauskentät auki, mutta vanhoilla arvoilla täytettyinä
+// router.route('/update/data/').post(function (req, res) {
 router.route('/update/data/:id').post(function (req, res) {
+    // console.log("query " + req.query);
+    // console.log("params " + req.params);
+    // console.log("body " + req.body);
     Data.findById(req.params.id, function(err, data) {
         if (!data)
             return next(new Error('Could not load Document'));
         else {
+            console.log(data);
             data.title = req.body.title;
             data.tags = req.body.tags;
             data.descript = req.body.descript;
             data.code = req.body.code;
             data.date = Date.now;
-
-            data.save().then(data => {
+            console.log(data);
+            console.log("Muutokset hoidettu");
+            data.save().then(() => {
                 res.json('Successfully Updated');
             })
                 .catch(err => {
