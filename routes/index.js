@@ -18,6 +18,9 @@ router.get('/update', function(req, res, next) {
     res.render('update', { title: 'RestMyCode_2.0' });
 });
 
+router.get('/read', function(req, res, next) {
+    res.render('read', { title: 'RestMyCode_2.0' });
+});
 
 
 module.exports = router;
