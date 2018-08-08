@@ -2,9 +2,11 @@
 <html>
 <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
     <script src="/javascripts/add.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+
     <script>$(function () {
             var id = JSON.parse(localStorage.getItem("id"));
             if (id != null) {
@@ -23,18 +25,63 @@
                 // localStorage.removeItem("id");
             }
         })</script>
+    <pre class="language-markup"><code>...</code></pre>
+    <script>
+        tinymce.init({
+            selector: '#readcodeid',
+            theme: 'modern',
+            width: 600,
+            height: 300,
+            plugins: ["code", "codesample"],
+            codesample_languages: [
+                {text: 'HTML/XML', value: 'markup'},
+                {text: 'JavaScript', value: 'javascript'},
+                {text: 'CSS', value: 'css'},
+                {text: 'PHP', value: 'php'},
+                {text: 'Ruby', value: 'ruby'},
+                {text: 'Python', value: 'python'},
+                {text: 'Java', value: 'java'},
+                {text: 'C', value: 'c'},
+                {text: 'C#', value: 'csharp'},
+                {text: 'C++', value: 'cpp'}
+            ],
+            toolbar: "codesample",
+        });
+    </script>
 </head>
 <body>
 <h1><%= title %></h1>
 <p>Read Page</p>
 <table id="readtable">
-    <tr><th class="readtableleft">Title:</th><th class="readtableright"><h2 id="readtitleid"></h2></th></tr>
-    <tr><th class="readtableleft">Description:</th><th class="readtableright"><p id="readdescriptid"></p></th></tr>
-    <tr><th class="readtableleft">Language:</th><th class="readtableright"><p id="readlangid"></p></th></tr>
-    <tr><th class="readtableleft">Author:</th><th class="readtableright"><p id="readauthorid"></p></th></tr>
-    <tr><th class="readtableleft">Code:</th><th class="readtableright"><p id="readcodeid"></p></th></tr>
-    <tr><th class="readtableleft">Tags:</th><th class="readtableright"><p id="readtagsid"></p></th></tr>
-    <tr><th class="readtableleft">Date:</th><th class="readtableright"><p id="readdateid"></p></th></tr>
+    <tr>
+        <th class="readtableleft">Title:</th>
+        <th class="readtableright"><h2 id="readtitleid"></h2></th>
+    </tr>
+    <tr>
+        <th class="readtableleft">Description:</th>
+        <th class="readtableright"><p id="readdescriptid"></p></th>
+    </tr>
+    <tr>
+        <th class="readtableleft">Language:</th>
+        <th class="readtableright"><p id="readlangid"></p></th>
+    </tr>
+    <tr>
+        <th class="readtableleft">Author:</th>
+        <th class="readtableright"><p id="readauthorid"></p></th>
+    </tr>
+    <tr>
+        <th class="readtableleft">Code:</th>
+        <th class="readtableright"><p id="readcodeid"></p></th>
+    </tr>
+    <tr>
+        <th class="readtableleft">Tags:</th>
+        <th class="readtableright"><p id="readtagsid"></p></th>
+    </tr>
+    <tr>
+        <th class="readtableleft">Date:</th>
+        <th class="readtableright"><p id="readdateid"></p></th>
+    </tr>
 </table>
+
 </body>
 </html>
