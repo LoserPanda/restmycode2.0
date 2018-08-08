@@ -18,8 +18,12 @@ router.get('/update', function(req, res, next) {
     res.render('update', { title: 'RestMyCode_2.0', id: req.query.id});
 });
 
-router.get('/read', function(req, res, next) {
-    res.render('read', { title: 'RestMyCode_2.0', id: req.query.id});
+// router.get('/read', function(req, res, next) {
+//     res.render('read', { title: 'RestMyCode_2.0', id: req.query.id});
+// });
+
+router.get('/read/:id', function(req, res, next) {
+    res.render('read', { title: 'RestMyCode_2.0', id: req.params.id});
 });
 
 router.get('/delete', function(req, res, next) {
