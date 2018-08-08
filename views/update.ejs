@@ -8,7 +8,7 @@
     <script>$(function () {
         var id = JSON.parse(localStorage.getItem("id"));
         if (id != null) {
-            let uri = '/users/' + JSON.parse(localStorage.getItem("id"));
+            let uri = '/users/' + id;
             console.log(uri);
             $.getJSON(uri, function (data) {
                 $("#titleid").val(data.title);
@@ -18,6 +18,8 @@
                 $("#authorid").val(data.author);
                 $("#tagsid").val(data.tags);
                 console.log(data);
+                var info = data.id;
+                url = "/users/update/data/" + info;
             });
             localStorage.removeItem("id");
         }
@@ -26,7 +28,7 @@
 <body>
 <h1><%= title %></h1>
 <p>Add Your Code Page</p>
-<form action="/users/data" method="POST">
+<form action='url' method="POST">
     <div>
         <label for="titleid">Title</label>
         <input type="text" placeholder="e.g. HelloWorld" name="title" id="titleid"/>
