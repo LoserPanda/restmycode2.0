@@ -19,7 +19,7 @@ router.get('/update', function(req, res, next) {
 });
 
 router.get('/read', function(req, res, next) {
-    res.render('read', { title: 'RestMyCode_2.0' });
+    res.render('read', { title: 'RestMyCode_2.0', id: req.query.id});
 });
 
 
