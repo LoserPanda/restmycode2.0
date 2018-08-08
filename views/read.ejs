@@ -8,7 +8,7 @@
     <script>$(function () {
             var id = JSON.parse(localStorage.getItem("id"));
             if (id != null) {
-                let uri = '/users/' + JSON.parse(localStorage.getItem("id"));
+                let uri = '/users/' + id;
                 console.log(uri);
                 $.getJSON(uri, function (data) {
                     $("#titleid").val(data.title);

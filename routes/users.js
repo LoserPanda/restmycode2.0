@@ -71,12 +71,12 @@ router.post('/data', (req, res) => {
 // {"userId":"5b6991df4315dc21ac3e13e1","title":"Syuuuggyhgjhing","descript":"String","lang":"String","tags":["jotain1", "jotain2"],"score": 2,"code":"String","comments":[{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"},{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"}]}
 
 //TODO kaikki muokkauskentät auki, mutta vanhoilla arvoilla täytettyinä
-router.route('/update/:id').put(function (req, res) {
+router.route('/update/data/:id').post(function (req, res) {
     Data.findById(req.params.id, function(err, data) {
         if (!data)
             return next(new Error('Could not load Document'));
         else {
-
+            data.title = req.body.title;
             data.tags = req.body.tags;
             data.descript = req.body.descript;
             data.code = req.body.code;
