@@ -6,7 +6,9 @@
     <script src="/javascripts/add.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script>$(function () {
-            var id = JSON.parse(localStorage.getItem("id"));
+        var ur = window.location.pathname.substring(6);
+        console.log(ur);
+            var id = window.location.pathname.substring(6);
             if (id != null) {
                 let uri = '/users/' + id;
                 console.log(uri);
