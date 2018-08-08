@@ -15,12 +15,28 @@ mongoose.connect(db, {useNewUrlParser: true}).then(() => {
     });
 
 router.get('/', function (req, res, next) {
-
     Data.find().sort({title: 'asc'}).exec(function (err, data) {
         // console.log(data);
         res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
     });
 });
+
+//TODO sort by date ascending
+router.get('/dateasc', function (req, res, next) {
+    Data.find().sort({date: 'asc'}).exec(function (err, data) {
+        // console.log(data);
+        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+    });
+});
+
+//TODO sort by date descending
+router.get('/datedesc', function (req, res, next) {
+    Data.find().sort({date: -1}).exec(function (err, data) {
+        // console.log(data);
+        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+    });
+});
+
 
 router.get('/:id', function (req, res) {
     Data.findById(req.params.id,function (err, data) {
