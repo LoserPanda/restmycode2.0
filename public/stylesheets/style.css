@@ -18,3 +18,22 @@ label {
 ul {
   list-style-type: none;
 }
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+a, img {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+tr:nth-child(even) {
+  background-color: lightgrey;
+}
+
+thead {
+  background-color: antiquewhite;
+}

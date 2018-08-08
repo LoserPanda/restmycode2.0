@@ -2,17 +2,40 @@
 <html>
 <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
 <h1><%= title %></h1>
-<p>Welcome to trololollooooo</p>
-<% for(var i = 0; i < data.length; ++i) { %>
-<tr class="quote">
-    <th><%= data[i].title %></th>
-    <th>|</th>
-    <th><%= data[i].descript %></th>
-</tr>
-<% } %>
+<p>Code Listing Page</p>
+<table class="quotes">
+    <thead>
+    <tr>
+        <th>TITLE</th>
+        <th>DESCRIPTION</th>
+        <th>LANGUAGE</th>
+        <th>AUTHOR</th>
+        <th>DATE</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(var i = 0; i < data.length; ++i) { %>
+    <tr>
+        <th><%= data[i].title %></th>
+        <th><%= data[i].descript %></th>
+        <th><%= data[i].lang %></th>
+        <th><%= data[i].author %></th>
+        <th><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></th>
+        <th>----</th>
+        <th><a href="/add"><img src="/images/read.png" alt="READ"></a></th>
+        <th><a href="/add"><img src="/images/edit.png" alt="EDIT"></a></th>
+        <th><a href="/add"><img src="/images/delete.png" alt="DELETE"></a></th>
+    </tr>
+    <% } %>
+    </tbody>
+</table>
 </body>
 </html>
