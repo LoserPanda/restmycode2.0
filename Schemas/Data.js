@@ -10,7 +10,10 @@ var Data = new Schema({
         default: Date.now
     },
     tags: [String],
-    score: Number,
+    score: {
+        type: Number,
+        default: 0
+    },
     code: String,
     author: String
 },{

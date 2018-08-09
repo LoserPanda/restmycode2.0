@@ -17,12 +17,33 @@
                     $("#readcodeid").text(data.code);
                     $("#readauthorid").text(data.author);
                     $("#readtagsid").text(data.tags);
+                    $("#readsocreid").text(data.score);
                     $("#readdateid").text(data.date);
                     console.log(data);
                 });
                 // localStorage.removeItem("id");
             }
         })</script>
+
+    <script>$(function () {
+            var id = JSON.parse(localStorage.getItem("id"));
+            if (id != null) {
+                let uri = '/users/' + id;
+                console.log(uri);
+                $.getJSON(uri, function (data) {
+                    $("#readscoreid").val(data.score);
+                    console.log(data);
+                    var info = data._id;
+                    url = "/users/score/" + info;
+                    $("#formid").attr('action',url);
+                    console.log("Formin action: " + $("#formid").attr('action'));
+                });
+            }})
+    </script>
+
+
+
+
     <pre class="language-markup"><code>...</code></pre>
     <script>
         tinymce.init({
@@ -70,6 +91,10 @@
         <td class="readtableright"><p id="readauthorid"></p></td>
     </tr>
     <tr>
+        <td class="readtableleft">Score:</td>
+        <td class="readtableright"><p id="readscoreid"></p></td>
+    </tr>
+    <tr>
         <td class="readtableleft">Code:</td>
         <td class="readtableright"><p id="readcodeid"></p></td>
     </tr>
@@ -82,6 +107,9 @@
         <td class="readtableright"><p id="readdateid"></p></td>
     </tr>
 </table>
+<form  method="POST" id="formid">
+    <button type="submit">Vote</button>
+</form>
 <footer>
     <% include partials/footer %>
 </footer>

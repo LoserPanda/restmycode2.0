@@ -20,7 +20,7 @@
         <th>LANGUAGE</th>
         <th>AUTHOR</th>
         <th>DATE</th>
-        <th></th>
+        <th>SCORE</th>
         <th></th>
         <th></th>
         <th></th>
@@ -35,7 +35,7 @@
         <td><%= data[i].author %></td>
         <td><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></td>
         <!--<td><%= data[i].date %></td>-->
-        <td>----</td>
+        <td><%= data[i].score %></td>
         <td><a href="/read/<%= data[i]._id %>"><img src="/images/read.png" alt="READ"
                                                     onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></td>
         <td><a href="/update"><img src="/images/edit.png" alt="EDIT" onclick=setIdToLocalStorage('<%= data[i]._id %>')></a>

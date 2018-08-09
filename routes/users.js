@@ -37,11 +37,25 @@ router.get('/datedesc', function (req, res, next) {
     });
 });
 
+router.get('/', function (req, res, next) {
+    Data.find().sort({title: 'asc'}).exec(function (err, data) {
+        // console.log(data);
+        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+    });
+});
+
 router.get('/:id', function (req, res) {
     Data.findById(req.params.id,function (err, data) {
         res.json(data);
     });
 });
+
+router.get('/score', function (req, res) {
+    Data.find(req.params.score, function (err, data) {
+        res.json(data);
+    });
+});
+
 
 router.post('/', (req, res) => {
     const user = new User(req.body);
@@ -52,6 +66,25 @@ router.post('/', (req, res) => {
         .catch(err => {
             res.status(400).send('unable to save the course into database');
         });
+});
+
+router.post('/score/:id', (req, res) => {
+    console.log("score");
+    Data.findById(req.params.id, function(err, data) {
+        if (err)
+            return next(new Error('Could not vote'));
+        else {
+            data.score = data.score +1 ;
+            console.log(data.score);
+            console.log("Muutokset hoidettu");
+            data.save(function(err,upodate) {
+                console.log(err);
+                console.log(upodate);
+                if (err) res.status(400).send("unable to update the score");
+                res.redirect("/read/" + req.params.id);
+            });
+        }
+    });
 });
 
 router.post('/data', (req, res) => {
