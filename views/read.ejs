@@ -4,19 +4,23 @@
     <% include partials/head %>
     <script>$(function () {
             var ur = window.location.pathname.substring(6);
-            console.log(ur);
             var id = window.location.pathname.substring(6);
             if (id != null) {
                 let uri = '/users/' + id;
                 $.getJSON(uri, function (data) {
+
+                    let deitti = data.date.toString().substring(0,10)
+                    let timefromdate = data.date.toString().substring(11,19)
+
                     $("#readtitleid").text(data.title);
                     $("#readdescriptid").text(data.descript);
                     $("#readlangid").text(data.lang);
                     $("#readcodeid").text(data.code);
                     $("#readauthorid").text(data.author);
-                    $("#readtagsid").text(data.tags);
+                    $("#readtagsid").text(data.tags.toString().replace(",", ", "));
                     $("#readscoreid").text(data.score);
-                    $("#readdateid").text(data.date);
+                    $("#readdateid").text(deitti + " " + timefromdate);
+
 
                     //Comments part starts form here
                     $("#dataidforcomment").val(data._id);
@@ -31,10 +35,12 @@
                 console.log(data);
 
 
-                for(var i = 0; i < data.length; i++){
+                for (var i = 0; i < data.length; i++) {
                     console.log(data[i].comment);
+                    let deitti = data[i].date.toString().substring(0,10)
+                    let timefromdate = data[i].date.toString().substring(11,19)
 
-                    $("<tr><td>"+data[i].comment+"</td><td>"+data[i].date+"</td><td>"+data[i].authorname+"</td></tr>").addClass("com_td").appendTo("#commentable");
+                    $("<tr><td>" + data[i].comment + "</td><td>" + deitti + " " + timefromdate + "</td><td>" + data[i].authorname + "</td></tr>").addClass("com_td").appendTo("#commentable");
                 }
 
             });
@@ -43,10 +49,8 @@
     <script>$(document).ready(function () {
             userNameFROMLocalStorageToCommentAuthor()
         });
-
     </script>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=zronyakzfk8m0obf9glt6t1bz0gsu2jcc2woyfw77jmdbfwc"></script>
-
     <script>
         tinymce.init({
             selector: '#readcodeid',
@@ -78,9 +82,10 @@
                     $("#readscoreid").val(data.score);
                     var info = data._id;
                     url = "/users/voteup/" + info;
-                    $("#voteup").attr('action',url);
+                    $("#voteup").attr('action', url);
                 });
-            }})
+            }
+        })
     </script>
 
     <script>$(function () {
@@ -91,9 +96,10 @@
                     $("#readscoreid").val(data.score);
                     var info = data._id;
                     url = "/users/votedown/" + info;
-                    $("#votedown").attr('action',url);
+                    $("#votedown").attr('action', url);
                 });
-            }})
+            }
+        })
     </script>
 
 </head>
@@ -137,26 +143,28 @@
     </tr>
 </table>
 
-<form id="voteup" method="POST"><button id= "vup" type="submit">Vote up</button></form>
-<form id="votedown" method="POST"><button id= "vdown" type="submit">Vote down</button></form>
-
-
-<!--id="formid"-->
-<!--class="readtableright"-->
-
+<form id="voteup" method="POST">
+    <button id="vup" type="submit">Vote up</button>
+</form>
+<form id="votedown" method="POST">
+    <button id="vdown" type="submit">Vote down</button>
+</form>
 <table id="commentable">
-    <tr class="commenttr" id="commenttrid" >
-        <td class=""><h3>Comment</h3></td><td class=""><h3>Date</h3></td><td class=""><h3>Author</h3></td>
+    <tr class="commenttr" id="commenttrid">
+        <td class=""><h3>Comment</h3></td>
+        <td class=""><h3>Date</h3></td>
+        <td class=""><h3>Author</h3></td>
     </tr>
 </table>
 <form action="/users/comment" method="POST">
     <div>
         <label for="commentid">Comment Code</label><br>
         <input type="hidden" name="dataId" id="dataidforcomment"/>
-        <label for="authorid">Author</label>
-        <input type="text" name="authorname" id="authorid" readonly/>
         <textarea type="text" placeholder="e.g. Cheer's mate, really liked your code" name="comment"
                   id="commentid"></textarea><br>
+        <label for="authorid">Author</label>
+        <input type="text" name="authorname" id="authorid" readonly/>
+
         <button type="submit">SUBMIT</button>
     </div>
 
