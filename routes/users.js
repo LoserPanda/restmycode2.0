@@ -23,31 +23,32 @@ router.get('/', function (req, res, next) {
 router.post('/filter', function (req, res, next) {
     var myQuery = {};
     var arr = [];
-    var num = 1;
-    if (req.body.tags !== null) {
+    if (req.body.tags !== undefined) {
         var keywords = req.body.tags.split(" ");
         for (i = 0; i < keywords.length; i++) {
             arr.push({tags: new RegExp(keywords[i], "i")});
             arr.push({title: new RegExp(keywords[i], "i")});
             arr.push({descript: new RegExp(keywords[i], "i")});
         }
+        myQuery.$or = arr;
     }
-    //TODO Muotoile myQuery $or
-    myQuery.$or = arr;
     console.log(myQuery);
 
-    if (req.body.lang !== null) myQuery.lang = new RegExp(req.body.lang, "i");
+    if (req.body.lang !== undefined) myQuery.lang =req.body.lang;
+    if (req.body.author !== undefined) myQuery.author =new RegExp(req.body.author,"i");
+    console.log(myQuery);
     Data.find(myQuery).sort({title: 'asc'}).exec(function (err, data) {
+        // console.log(data);
         if (data.length < 1) {
             res.status(404).send('unable to save the course into database');
         }
         else {
+            console.log("Moro");
             res.render('listing.ejs', {data: data, title: "RestMyCode_2.0"}, function (err, html) {
+                console.log("Moro taas");
                 res.send(html);
             });
         }
-        // console.log(data);
-        res.render('listing.ejs', {data: data, title: "RestMyCode_2.0"});
     });
 });
 
@@ -239,7 +240,7 @@ router.route('/update/data/:id').post(function (req, res) {
             console.log("Muutokset hoidettu");
             data.save(function (err, upodate) {
                 if (err) res.status(400).send("unable to update the database");
-                res.redirect("updated");
+                res.redirect("/users");
             });
         }
     });
