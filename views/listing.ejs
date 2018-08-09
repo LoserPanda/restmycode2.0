@@ -21,14 +21,12 @@
     </tbody>
 </table>
 <button onclick=search()>Filter</button>
-<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/datedesc'"><img
-            src="/images/sortdesc.png" alt="SWITCH"></button>
-<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/dateasc'"><img
-            src="/images/sortasc.png" alt="SWITCH"></button>
-
-<button class="sort" data-sort="title">Titlesort</button>
+<div>
+    <button onclick="sortTableByScoreDesc()"><img src="/images/sortdesc.png" alt="Sort by Score Descending"></button>
+    <button onclick="sortTableByScoreAsc()"><img src="/images/sortasc.png" alt="Sort by Score Ascending"></button>
+</div>
 <div id='users'>
-    <table>
+    <table id="myTable">
         <thead>
         <tr>
             <th>TITLE</th>
