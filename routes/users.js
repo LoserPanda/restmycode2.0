@@ -5,7 +5,7 @@ const db = "mongodb://localhost:27017/restmycodeDB";
 
 const Data = require('../Schemas/Data');
 const User = require('../Schemas/User');
-
+const Comment = require ('../Schemas/Comment');
 
 mongoose.connect(db, {useNewUrlParser: true}).then(() => {
         console.log('Database is connected')
@@ -41,6 +41,17 @@ router.get('/:id', function (req, res) {
     Data.findById(req.params.id, function (err, data) {
         res.json(data);
     });
+});
+
+router.get('/comment/:id', function (req, res) {
+    Comment.find().sort({}).exec(function (err, data) {
+        console.log(data);
+        res.json(data);
+    });
+    // Comment.find({dataId: req.params.id}).toArray().then((result) => {
+    //     console.log(res);
+    //     res.json(result);
+    // })
 });
 
 router.post('/', (req, res) => {
@@ -111,7 +122,23 @@ router.post('/signin', (req, res) => {
             res.redirect("/");
         }
     }
+
     User.count({name: req.body.name, password: req.body.password}).then(resolver);
+});
+
+router.post('/comment', (req, res) => {
+    var id = req.body.dataId;
+    console.log(req.body.dataId);
+    const comment = new Comment({dataId: req.body.dataId, comment: req.body.comment});
+    comment.save()
+        .then(data => {
+            res.status(200).redirect("/read/" + id);
+        })
+        .catch(err => {
+            console.log("Error 400");
+            res.status(400).send('unable to save the comment into database').redirect("/read/" + id);
+        });
+
 });
 
 // {"userId":"5b6991df4315dc21ac3e13e1","title":"Syuuuggyhgjhing","descript":"String","lang":"String","tags":["jotain1", "jotain2"],"score": 2,"code":"String","comments":[{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"},{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"}]}
@@ -132,7 +159,7 @@ router.route('/update/data/:id').post(function (req, res) {
             console.log("Muutokset hoidettu");
             data.save(function (err, upodate) {
                 if (err) res.status(400).send("unable to update the database");
-                res.json(upodate);
+                res.redirect("updated");
             });
         }
     });

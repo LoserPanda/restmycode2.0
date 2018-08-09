@@ -23,6 +23,29 @@
             localStorage.removeItem("id");
         }
         })</script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=zronyakzfk8m0obf9glt6t1bz0gsu2jcc2woyfw77jmdbfwc"></script>
+    <script>
+        tinymce.init({
+            selector: '#codeid',
+            theme: 'modern',
+            width: 600,
+            height: 300,
+            plugins: "codesample",
+            codesample_languages: [
+                {text: 'HTML/XML', value: 'markup'},
+                {text: 'JavaScript', value: 'javascript'},
+                {text: 'CSS', value: 'css'},
+                {text: 'PHP', value: 'php'},
+                {text: 'Ruby', value: 'ruby'},
+                {text: 'Python', value: 'python'},
+                {text: 'Java', value: 'java'},
+                {text: 'C', value: 'c'},
+                {text: 'C#', value: 'csharp'},
+                {text: 'C++', value: 'cpp'}
+            ],
+            toolbar: "codesample",
+        });
+    </script>
 </head>
 <body>
 <header>

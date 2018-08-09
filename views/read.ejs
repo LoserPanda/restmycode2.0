@@ -2,14 +2,12 @@
 <html>
 <head>
     <% include partials/head %>
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
     <script>$(function () {
-        var ur = window.location.pathname.substring(6);
-        console.log(ur);
+            var ur = window.location.pathname.substring(6);
+            console.log(ur);
             var id = window.location.pathname.substring(6);
             if (id != null) {
                 let uri = '/users/' + id;
-                console.log(uri);
                 $.getJSON(uri, function (data) {
                     $("#readtitleid").text(data.title);
                     $("#readdescriptid").text(data.descript);
@@ -18,19 +16,36 @@
                     $("#readauthorid").text(data.author);
                     $("#readtagsid").text(data.tags);
                     $("#readdateid").text(data.date);
-                    console.log(data);
+
+                    //Comments part starts form here
+                    $("#dataidforcomment").val(data._id);
+
                 });
+
                 // localStorage.removeItem("id");
             }
+            let curi = '/users/comment/' + id;
+            console.log("Curi on : " + curi)
+            $.getJSON(curi, function (data) {
+                console.log(data);
+
+
+                for(var i = 0; i < data.length; i++){
+                    console.log(data[i].comment);
+
+                    $("<tr><td>"+data[i].comment+"</td><td>"+data[i].date+"</td><td>"+data[i].comment+"</td></tr>").addClass("com_td").appendTo("#commentable");
+                }
+
+            });
         })</script>
-    <pre class="language-markup"><code>...</code></pre>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=zronyakzfk8m0obf9glt6t1bz0gsu2jcc2woyfw77jmdbfwc"></script>
     <script>
         tinymce.init({
             selector: '#readcodeid',
             theme: 'modern',
-            width: 600,
+            width: 800,
             height: 300,
-            plugins: ["code", "codesample"],
+            plugins: "codesample",
             codesample_languages: [
                 {text: 'HTML/XML', value: 'markup'},
                 {text: 'JavaScript', value: 'javascript'},
@@ -43,9 +58,10 @@
                 {text: 'C#', value: 'csharp'},
                 {text: 'C++', value: 'cpp'}
             ],
-            toolbar: "codesample",
+            readonly: true,
         });
     </script>
+
 </head>
 <body>
 <header>
@@ -71,7 +87,7 @@
     </tr>
     <tr>
         <td class="readtableleft">Code:</td>
-        <td class="readtableright"><p id="readcodeid"></p></td>
+        <td class="readtableright"><textarea id="readcodeid"></textarea></td>
     </tr>
     <tr>
         <td class="readtableleft">Tags:</td>
@@ -82,6 +98,28 @@
         <td class="readtableright"><p id="readdateid"></p></td>
     </tr>
 </table>
+<!--id="formid"-->
+<!--class="readtableright"-->
+
+<table id="commentable">
+    <!--<tr>-->
+    <!--<td class="readcommentleft">Date:</td>-->
+    <!--<td class="readtableright"><p id="commentdate"></p></td>-->
+    <!--</tr>-->
+    <tr class="commenttr" id="commenttrid">
+        <td class="readcommentleft">Comment:</td>
+        <td class="readcommentright"><p id="commentcomment"></p></td>
+    </tr>
+</table>
+<form action="/users/comment" method="POST">
+    <div>
+        <label for="commentid">Comment Code</label><br>
+        <input type="hidden" name="dataId" id="dataidforcomment"/>
+        <textarea type="text" placeholder="e.g. Cheer's mate, really liked your code" name="comment"
+                  id="commentid"></textarea><br>
+        <button type="submit">SUBMIT</button>
+    </div>
+</form>
 <footer>
     <% include partials/footer %>
 </footer>
