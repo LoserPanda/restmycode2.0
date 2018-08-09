@@ -11,8 +11,7 @@ function addTagToArray() {
 
 function setIdToLocalStorage(id){
     localStorage.setItem("id",JSON.stringify(id));
-<<<<<<< HEAD
-=======
+
 }
 
 function removeTagFromArray(param){
@@ -36,9 +35,8 @@ function removeData(){
             location.href = "/users/data/deleted";
         },
         error: function (xhr, textStatus, errorThrown) {
-            alert("Virhe: dataa ei löytynyt");
+            alert("Error: data not found!");
             location.href = "/users/";
         }
     });
->>>>>>> 243e47ac419d769b17041a3233299227e62316a1
 }
