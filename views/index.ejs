@@ -9,6 +9,38 @@
     <% include partials/header %>
 </header>
 <p>Home Page</p>
+<div id="signupid">
+<h2>Sign up for the first time</h2>
+<form action="/users/signup" method="POST">
+    <div>
+        <label for="signupnameid">Name</label>
+        <input type="text" name="name" id="signupnameid"/>
+    </div>
+    <div>
+        <label for="signuppasswordid">Password</label>
+        <input type="password" name="password" id="signuppasswordid"/>
+    </div>
+    <div>
+        <button type="submit">SIGN UP</button>
+    </div>
+</form>
+</div>
+<div id="signinid">
+    <h2>Already an abuser? Sign in!</h2>
+    <form action="/users/signin" method="POST">
+        <div>
+            <label for="signinnameid">Name</label>
+            <input type="text" name="name" id="signinnameid"/>
+        </div>
+        <div>
+            <label for="signinpasswordid">Password</label>
+            <input type="password" name="password" id="signinpasswordid"/>
+        </div>
+        <div>
+            <button type="submit">SIGN IN</button>
+        </div>
+    </form>
+</div>
 <footer>
     <% include partials/footer %>
 </footer>
