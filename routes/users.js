@@ -5,7 +5,7 @@ const db = "mongodb://localhost:27017/restmycodeDB";
 
 const Data = require('../Schemas/Data');
 const User = require('../Schemas/User');
-
+const Comment = require ('../Schemas/Comment');
 
 mongoose.connect(db, {useNewUrlParser: true}).then(() => {
         console.log('Database is connected')
@@ -43,6 +43,17 @@ router.get('/:id', function (req, res) {
     });
 });
 
+router.get('/comment/:id', function (req, res) {
+    Comment.find().sort({}).exec(function (err, data) {
+        console.log(data);
+        res.json(data);
+    });
+    // Comment.find({dataId: req.params.id}).toArray().then((result) => {
+    //     console.log(res);
+    //     res.json(result);
+    // })
+});
+
 router.post('/', (req, res) => {
     const user = new User(req.body);
     user.save()
@@ -63,6 +74,20 @@ router.post('/data', (req, res) => {
         })
         .catch(err => {
             res.status(400).send('unable to save the course into database');
+        });
+});
+
+router.post('/comment', (req, res) => {
+    var id = req.body.dataId;
+    console.log(req.body.dataId);
+    const comment = new Comment({dataId: req.body.dataId, comment: req.body.comment});
+    comment.save()
+        .then(data => {
+            res.status(200).redirect("/read/" + id);
+        })
+        .catch(err => {
+            console.log("Error 400");
+            res.status(400).send('unable to save the comment into database').redirect("/read/" + id);
         });
 });
 
