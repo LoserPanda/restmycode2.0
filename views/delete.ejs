@@ -10,7 +10,6 @@
             var id = JSON.parse(localStorage.getItem("id"));
             if (id != null) {
                 let uri = '/users/' + id;
-                console.log(uri);
                 $.getJSON(uri, function (data) {
                     $("#deletetitleid").text(data.title);
                     $("#deletedescriptid").text(data.descript);
@@ -19,7 +18,6 @@
                     $("#deleteauthorid").text(data.author);
                     $("#deletetagsid").text(data.tags);
                     $("#deletedateid").text(data.date);
-                    console.log(data);
                 });
             }
         })</script>
@@ -30,7 +28,7 @@
 </header>
 <p>Are you sure you wan't to delete this post?</p>
 <button id="cancel" onclick="window.location.href='http://localhost:3000/users'">Cancel</button>
-<button id="deletedata" >Delete</button>
+<button id="deletedata" onclick=removeData()>Delete</button>
 
 <table id="readtable">
     <tr><th class="readtableleft">Title:</th><th class="readtableright"><h2 id="deletetitleid"></h2></th></tr>

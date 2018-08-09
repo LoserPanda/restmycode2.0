@@ -1,5 +1,4 @@
 var tagArray = [];
-console.log("mono");
 
 function addTagToArray() {
     let tagSuspection = $('#helptagsid').val().toString();
@@ -21,4 +20,22 @@ function removeTagFromArray(param){
     tagArray.splice(row,1);
     $('#tagsid').val(tagArray);
     console.log(tagArray);
+}
+
+function removeData(){
+    var uri = 'users/deletedata/' + JSON.parse(localStorage.getItem("id"));
+    console.log("Tämä on uri: " + uri);
+    $.ajax({
+        url: uri,
+        type: 'DELETE',
+        dataType: 'json',
+        success: function () {
+            console.log("Toimii");
+            location.href = "/users/data/deleted";
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            alert("Virhe: dataa ei löytynyt");
+            location.href = "/users/";
+        }
+    });
 }
