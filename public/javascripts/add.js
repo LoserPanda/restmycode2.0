@@ -1,10 +1,11 @@
 var tagArray = [];
 
-function addTagToArray() {
-    let tagSuspection = $('#helptagsid').val().toString();
+function addTagToArray(tagSuspection) {
+    // console.log(x);
+    // let tagSuspection = $('#helptagsid').val().toString();
     tagArray.push(tagSuspection);
     console.log(tagArray);
-    $('<tr ><td>' + tagSuspection + '</td><td onclick=removeTagFromArray(this)><img src="/images/deletetag.png" ></td></tr>').addClass('deletetag').appendTo('#helptagstableid');
+    $('<tr><td>' + tagSuspection + '</td><td onclick=removeTagFromArray(this)><img src="/images/deletetag.png" ></td></tr>').addClass('deletetag').appendTo('#helptagstableid');
     $('#tagsid').val(tagArray);
     $('#helptagsid').val('');
 }
@@ -159,7 +160,7 @@ function stopIrresponsi(x){
     var row = x.parentNode.parentNode.rowIndex;
     var author = document.getElementById('myTable').rows[row].cells[3].innerHTML;
     if (author !== localStorage.getItem('username')) {
-        alert('Not authorized!');
+        alert("Not authorized! You can not update other user's code.");
     } else {
         window.location.href = '/update';
     }
@@ -168,7 +169,7 @@ function stopIrresponsiDel(x){
     var row = x.parentNode.parentNode.rowIndex;
     var author = document.getElementById('myTable').rows[row].cells[3].innerHTML;
     if (author !== localStorage.getItem('username')) {
-        alert('Not authorized!');
+        alert("Not authorized! You can not delete other user's code.");
     } else {
         window.location.href = '/delete';
     }

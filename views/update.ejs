@@ -3,26 +3,36 @@
 <head>
     <% include partials/head %>
     <script>$(function () {
-        var id = JSON.parse(localStorage.getItem("id"));
-        if (id != null) {
-            let uri = '/users/' + id;
-            console.log(uri);
-            $.getJSON(uri, function (data) {
-                $("#titleid").val(data.title);
-                $("#descriptid").val(data.descript);
-                // $("#langid").attr('selected',true);
-                $("#langid").val(data.lang);
-                $("#codeid").val(data.code);
-                $("#authorid").val(data.author);
-                $("#tagsid").val(data.tags);
-                console.log(data);
-                var info = data._id;
-                url = "/users/update/data/" + info;
-                $("#formid").attr('action',url);
-                console.log("Formin action: " + $("#formid").attr('action'));
-            });
-            localStorage.removeItem("id");
-        }
+            var id = JSON.parse(localStorage.getItem("id"));
+            if (id != null) {
+                let uri = '/users/' + id;
+                console.log(uri);
+                $.getJSON(uri, function (data) {
+                        $("#titleid").val(data.title);
+                        $("#descriptid").val(data.descript);
+                        // $("#langid").attr('selected',true);
+                        $("#langid").val(data.lang);
+                        $("#codeid").val(data.code);
+                        $("#authorid").val(data.author);
+                        $("#tagsid").val(data.tags);
+                        console.log(data);
+                        var info = data._id;
+                        url = "/users/update/data/" + info;
+                        $("#formid").attr('action', url);
+                        console.log("Formin action: " + $("#formid").attr('action'));
+                        console.log(data.tags);
+                        if (data.tags.length > 0) {
+                            if (data.tags.length === 1) var oldTags = data.tags[0].split(",");
+                            else var oldTags=data.tags;
+                            for (i = 0; i < oldTags.length; i++) {
+                                if (oldTags[i]!=='') addTagToArray(oldTags[i]);
+                            }
+                        }
+
+                    }
+                );
+                localStorage.removeItem("id");
+            }
         })</script>
     <script>$(document).ready(function () {
             userNameFROMLocalStorageToCommentAuthor()
@@ -57,7 +67,7 @@
     <% include partials/header %>
 </header>
 <p>Add Your Code Page</p>
-<form  method="POST" id="formid">
+<form method="POST" id="formid">
     <div>
         <label for="titleid">Title</label>
         <input type="text" placeholder="e.g. HelloWorld" name="title" id="titleid"/>
@@ -80,7 +90,7 @@
     </div>
     <div>
         <label for="helptagsid">Tags</label>
-        <input onchange="addTagToArray()" type="text" placeholder="e.g. POST" name="helptags" id="helptagsid"/>
+        <input onchange=addTagToArray(this.value) type="text" placeholder="e.g. POST" name="helptags" id="helptagsid"/>
         <div>ADD TAG</div>
         <table id="helptagstableid"></table>
     </div>
