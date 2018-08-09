@@ -4,7 +4,7 @@ function addTagToArray() {
     let tagSuspection = $('#helptagsid').val().toString();
     tagArray.push(tagSuspection);
     console.log(tagArray);
-    $('<tr ><td>' + tagSuspection + '</td><td onclick=removeTagFromArray(this)><img src="/images/switch.png" ></td></tr>').addClass('deletetag').appendTo('#helptagstableid');
+    $('<tr ><td>' + tagSuspection + '</td><td onclick=removeTagFromArray(this)><img src="/images/deletetag.png" ></td></tr>').addClass('deletetag').appendTo('#helptagstableid');
     $('#tagsid').val(tagArray);
     $('#helptagsid').val('');
 }
@@ -91,7 +91,7 @@ function initLangSelectAdd(){
     $("<optionvalue='C++'>C++</option>").appendTo("#langid");
     $("<optionvalue='Other'>Other</option>").appendTo("#langid");
 }
-function initLangSelectList(){
+function initLangSelectList() {
     $("<option value='HTML'>HTML</option>").appendTo("#selectedLang");
     $("<option value='JavaScript'>JavaScript</option>").appendTo("#selectedLang");
     $("<option value='CSS'>CSS</option>").appendTo("#selectedLang");
@@ -103,4 +103,13 @@ function initLangSelectList(){
     $("<option value='C#'>C#</option>").appendTo("#selectedLang");
     $("<option value='C++'>C++</option>").appendTo("#selectedLang");
     $("<option value='Other' selected='true'>Any/Other</option>").appendTo("#selectedLang");
+
+}
+
+function userNameToLocalStorageUp() {
+    localStorage.setItem('username', $('#signupnameid').val());
+}
+
+function userNameToLocalStorageIn() {
+    localStorage.setItem('username', $('#signinnameid').val());
 }
