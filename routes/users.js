@@ -111,7 +111,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.post('/score/:id', (req, res) => {
+router.post('/voteup/:id', (req, res) => {
     Data.findById(req.params.id, function(err, data) {
         if (err)
             return next(new Error('Could not vote'));
@@ -128,7 +128,7 @@ router.post('/score/:id', (req, res) => {
     });
 });
 
-router.post('/scoredown/:id', (req, res) => {
+router.post('/votedown/:id', (req, res) => {
     Data.findById(req.params.id, function(err, data) {
         if (err)
             return next(new Error('Could not vote'));

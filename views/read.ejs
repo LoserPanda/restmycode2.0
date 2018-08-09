@@ -77,8 +77,21 @@
                 $.getJSON(uri, function (data) {
                     $("#readscoreid").val(data.score);
                     var info = data._id;
-                    url = "/users/score/" + info;
-                    $("#formup").attr('action',url);
+                    url = "/users/voteup/" + info;
+                    $("#voteup").attr('action',url);
+                });
+            }})
+    </script>
+
+    <script>$(function () {
+            var id = JSON.parse(localStorage.getItem("id"));
+            if (id != null) {
+                let uri = '/users/' + id;
+                $.getJSON(uri, function (data) {
+                    $("#readscoreid").val(data.score);
+                    var info = data._id;
+                    url = "/users/votedown/" + info;
+                    $("#votedown").attr('action',url);
                 });
             }})
     </script>
@@ -124,10 +137,8 @@
     </tr>
 </table>
 
-<form  method="POST" id="formup">
-    <button id= "voteup" type="submit">Vote up</button>
-    <button id= "votedown" type="submit">Vote down</button>
-</form>
+<form id="voteup" method="POST"><button id= "vup" type="submit">Vote up</button></form>
+<form id="votedown" method="POST"><button id= "vdown" type="submit">Vote down</button></form>
 
 
 <!--id="formid"-->
