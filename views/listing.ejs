@@ -68,12 +68,12 @@
             <td>----</td>
             <td><a href="/read/<%= data[i]._id %>"><img src="/images/read.png" alt="READ"
                                                         onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></td>
-            <td><a href="/update"><img src="/images/edit.png" alt="EDIT"
-                                       onclick=setIdToLocalStorage('<%= data[i]._id %>')></a>
+            <td><img src="/images/edit.png" alt="EDIT"  style="cursor: pointer"
+                                       onclick=setIdToLocalStorage('<%= data[i]._id %>'),stopIrresponsi(this)>
             </td>
             <!--<th><a href="/update"><img src="/images/edit.png" alt="EDIT"></a></th>-->
-            <td><a href="/delete"><img src="/images/delete.png" alt="DELETE"
-                                       onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></td>
+            <td><img src="/images/delete.png" alt="DELETE" style="cursor: pointer"
+                                       onclick=setIdToLocalStorage('<%= data[i]._id %>'),stopIrresponsiDel(this)></td>
         </tr>
         <% } %>
         </tbody>
