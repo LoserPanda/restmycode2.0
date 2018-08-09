@@ -40,3 +40,11 @@ function removeData(){
         }
     });
 }
+
+function userNameToLocalStorageUp() {
+    localStorage.setItem('username', $('#signupnameid').val());
+}
+
+function userNameToLocalStorageIn() {
+    localStorage.setItem('username', $('#signinnameid').val());
+}

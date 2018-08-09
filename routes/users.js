@@ -81,8 +81,11 @@ router.post('/signup', (req, res) => {
     function resolver(count) {
         if (count > 0) {
             console.log('Username exists.');
+            res.redirect("/");
+            //TODO ilmoita käyttäjälle
         } else {
-            console.log('Username does not exist.');
+            //TODO ilmoita käyttäjälle ja kirjaudu sisään -> olet taalla
+            console.log('Username and password added successfully!');
             data.save()
                 .then(data => {
                     res.status(200).redirect("/");
@@ -96,14 +99,19 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/signin', (req, res) => {
-    const data = new User(req.body);
-    data.save()
-        .then(data => {
-            res.status(200).redirect("/");
-        })
-        .catch(err => {
-            res.status(400).send('unable to save the user into database');
-        });
+    // const data = new User(req.body);
+    function resolver(count) {
+        if (count > 0) {
+            console.log('Logged in successfully!');
+            res.redirect("/users");
+            //TODO olet kirjautunut
+        } else {
+            console.log('Username or password incorrect!');
+            //TODO et ole kirjautunut
+            res.redirect("/");
+        }
+    }
+    User.count({name: req.body.name, password: req.body.password}).then(resolver);
 });
 
 // {"userId":"5b6991df4315dc21ac3e13e1","title":"Syuuuggyhgjhing","descript":"String","lang":"String","tags":["jotain1", "jotain2"],"score": 2,"code":"String","comments":[{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"},{"author":"5b6995401e4ba7ae48fe6495", "comment":"Schaqize"}]}
