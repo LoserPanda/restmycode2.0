@@ -42,12 +42,15 @@ function removeData() {
 
 function search(){
     var tag = $('#tagsearch').val();
-    console.log("tag: " + tag);
     var lang = $('#selectedLang').val();
+    var aut = $('#authorSearch').val();
+    console.log(lang);
     var lahetettava = {};
-    if (tag!='') lahetettava.tags=tag;
-    if (lang!=='Any/Other') lahetettava.lang=lang;
-    if (lahetettava!=={}) {
+    if (tag!=='') lahetettava.tags=tag;
+    if (aut!=='') lahetettava.author=aut;
+    if (lang!=='All') lahetettava.lang=lang;
+    // if (lahetettava.lang !== undefined || lahetettava.tags!== undefined) {
+        console.log(lahetettava);
         $.ajax({
             url: 'users/filter',
             type: 'POST',
@@ -55,12 +58,13 @@ function search(){
             data: JSON.stringify(lahetettava),
             success: function (result) {
                 $(document.documentElement).html(result);
+                ini
             },
             error: function () {
                 alert("No data found")
             }
         });
-    }
+    // }
 }
 
 
@@ -74,8 +78,8 @@ function initLangSelect(){
     $("<option value='Java'>Java</option>").appendTo("#langid");
     $("<option value='C'>C</option>").appendTo("#langid");
     $("<option value='C#'>C#</option>").appendTo("#langid");
-    $("<optionvalue='C++'>C++</option>").appendTo("#langid");
-    $("<optionvalue='Other'>Other</option>").appendTo("#langid");
+    $("<option value='C++'>C++</option>").appendTo("#langid");
+    $("<option value='Other'>Other</option>").appendTo("#langid");
 }
 
 
@@ -89,22 +93,8 @@ function initLangSelectAdd(){
     $("<option value='Java' selected='true'>Java</option>").appendTo("#langid");
     $("<option value='C'>C</option>").appendTo("#langid");
     $("<option value='C#'>C#</option>").appendTo("#langid");
-    $("<optionvalue='C++'>C++</option>").appendTo("#langid");
-    $("<optionvalue='Other'>Other</option>").appendTo("#langid");
-}
-function initLangSelectList() {
-    $("<option value='HTML'>HTML</option>").appendTo("#selectedLang");
-    $("<option value='JavaScript'>JavaScript</option>").appendTo("#selectedLang");
-    $("<option value='CSS'>CSS</option>").appendTo("#selectedLang");
-    $("<option value='PHP'>PHP</option>").appendTo("#selectedLang");
-    $("<option value='Ruby'>Ruby</option>").appendTo("#selectedLang");
-    $("<option value='Python'>Python</option>").appendTo("#selectedLang");
-    $("<option value='Java'>Java</option>").appendTo("#selectedLang");
-    $("<option value='C'>C</option>").appendTo("#selectedLang");
-    $("<option value='C#'>C#</option>").appendTo("#selectedLang");
-    $("<option value='C++'>C++</option>").appendTo("#selectedLang");
-    $("<option value='Other' selected='true'>Any/Other</option>").appendTo("#selectedLang");
-
+    $("<option value='C++'>C++</option>").appendTo("#langid");
+    $("<option value='Other'>Other</option>").appendTo("#langid");
 }
 
 function userNameToLocalStorageUp() {

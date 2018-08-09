@@ -16,8 +16,22 @@
     </tr>
     <tr>
         <td>Programming language</td>
-        <td><select id="selectedLang"></select></td>
+        <td><select id="selectedLang">
+                <option value='HTML'>HTML</option>
+                <option value='JavaScript'>JavaScript</option>
+                <option value='CSS'>CSS</option>
+                <option value='PHP'>PHP</option>
+                <option value='Ruby'>Ruby</option>
+                <option value='Python'>Python</option>
+                <option value='Java'>Java</option>
+                <option value='C'>C</option>
+                <option value='C#'>C#</option>
+                <option value='C++'>C++</option>
+                <option value='Other'>Other</option>
+                <option value='All' selected="true">All</option>
+            </select></td>
     </tr>
+    <tr><td>Author</td><td><input id="authorSearch"></td></tr>
     </tbody>
 </table>
 <button onclick=search()>Filter</button>
@@ -69,7 +83,7 @@
 </div>
 <footer>
     <% include partials/footer %>
-    <script>initLangSelectList()</script>
+    <!--<script>initLangSelectList()</script>-->
 </footer>
 </body>
 </html>
