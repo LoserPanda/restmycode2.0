@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <script src="/javascripts/add.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <% include partials/head %>
     <script>$(function () {
         var id = JSON.parse(localStorage.getItem("id"));
         if (id != null) {
@@ -66,5 +63,8 @@
         <button type="submit">SUBMIT</button>
     </div>
 </form>
+<footer>
+    <% include partials/footer %>
+</footer>
 </body>
 </html>

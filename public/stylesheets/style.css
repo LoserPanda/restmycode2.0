@@ -75,3 +75,8 @@ thead {
   background-color: #ddd;
   color: black;
 }
+
+#footerid p {
+  text-align: right;
+  color: white;
+}
