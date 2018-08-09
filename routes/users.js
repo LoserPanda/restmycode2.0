@@ -16,16 +16,46 @@ mongoose.connect(db, {useNewUrlParser: true}).then(() => {
 
 router.get('/', function (req, res, next) {
     Data.find().sort({title: 'asc'}).exec(function (err, data) {
-        // console.log(data);
-        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+        res.render('listing.ejs', {data: data, title: "RestMyCode_2.0"});
     });
 });
+
+// MIIKAN KEKKULOINTEJA
+router.post('/filter', function (req, res, next) {
+    var myQuery = {};
+    var arr = [];
+    var num = 1;
+    if (req.body.tags !== null) {
+        var keywords = req.body.tags.split(" ");
+        for (i = 0; i < keywords.length; i++) {
+            arr.push({tags: new RegExp(keywords[i], "i")});
+            arr.push({title: new RegExp(keywords[i], "i")});
+            arr.push({descript: new RegExp(keywords[i], "i")});
+        }
+    }
+    //TODO Muotoile myQuery $or
+    myQuery.$or = arr;
+    console.log(myQuery);
+
+    if (req.body.lang !== null) myQuery.lang = new RegExp(req.body.lang, "i");
+    Data.find(myQuery).sort({title: 'asc'}).exec(function (err, data) {
+        if (data.length < 1) {
+            res.status(404).send('unable to save the course into database');
+        }
+        else {
+            res.render('listing.ejs', {data: data, title: "RestMyCode_2.0"}, function (err, html) {
+                res.send(html);
+            });
+        }
+    });
+});
+
 
 //TODO sort by date ascending
 router.get('/dateasc', function (req, res, next) {
     Data.find().sort({date: 'asc'}).exec(function (err, data) {
         // console.log(data);
-        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+        res.render('listing.ejs', {data: data, title: "RestMyCode_2.0"});
     });
 });
 
@@ -33,12 +63,12 @@ router.get('/dateasc', function (req, res, next) {
 router.get('/datedesc', function (req, res, next) {
     Data.find().sort({date: -1}).exec(function (err, data) {
         // console.log(data);
-        res.render('listing.ejs', {data: data, title:"RestMyCode_2.0"});
+        res.render('listing.ejs', {data: data, title: "RestMyCode_2.0"});
     });
 });
 
 router.get('/:id', function (req, res) {
-    Data.findById(req.params.id,function (err, data) {
+    Data.findById(req.params.id, function (err, data) {
         res.json(data);
     });
 });
@@ -56,7 +86,14 @@ router.post('/', (req, res) => {
 
 router.post('/data', (req, res) => {
     var tags = req.body.tags.toString().split(',');
-    const data = new Data({title: req.body.title, descript: req.body.descript, lang: req.body.lang, code: req.body.code, author: req.body.author, tags: tags});
+    const data = new Data({
+        title: req.body.title,
+        descript: req.body.descript,
+        lang: req.body.lang,
+        code: req.body.code,
+        author: req.body.author,
+        tags: tags
+    });
     data.save()
         .then(data => {
             res.status(200).redirect("/");
@@ -70,7 +107,7 @@ router.post('/data', (req, res) => {
 
 //TODO kaikki muokkauskentät auki, mutta vanhoilla arvoilla täytettyinä
 router.route('/update/data/:id').post(function (req, res) {
-    Data.findById(req.params.id, function(err, data) {
+    Data.findById(req.params.id, function (err, data) {
         if (err)
             return next(new Error('Could not load Document'));
         else {
@@ -82,7 +119,7 @@ router.route('/update/data/:id').post(function (req, res) {
             data.tags = req.body.tags;
             console.log(data);
             console.log("Muutokset hoidettu");
-            data.save(function(err,upodate) {
+            data.save(function (err, upodate) {
                 if (err) res.status(400).send("unable to update the database");
                 res.json(upodate);
             });
@@ -94,23 +131,23 @@ router.route('/deletedata/:id').delete(function (req, res) {
     Data.findByIdAndRemove({_id: req.params.id}, function (err, deleted) {
         console.log("err: " + err);
         console.log("course: " + deleted);
-        console.log(deleted===null);
-        if(deleted === null) res.status(404).send("Unable to remove, not found");
+        console.log(deleted === null);
+        if (deleted === null) res.status(404).send("Unable to remove, not found");
         else res.json('Successfully removed');
     });
 });
 
 router.route('/deleteuser/:id').delete(function (req, res) {
-    User.findByIdAndRemove({_id: req.params.id}, function(err, user){
-        console.log(err!=null);
-        if(err != null) res.status(404).send("Unable to remove, not found");
+    User.findByIdAndRemove({_id: req.params.id}, function (err, user) {
+        console.log(err != null);
+        if (err != null) res.status(404).send("Unable to remove, not found");
         else res.json('Successfully removed');
     });
 });
 
 router.get('/data/deleted', function (req, res) {
     console.log("deleted");
-    res.render('datadeleted', {title:"RestMyCode_2.0"});
+    res.render('datadeleted', {title: "RestMyCode_2.0"});
 });
 
 module.exports = router;
