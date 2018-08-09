@@ -91,17 +91,26 @@ router.route('/update/data/:id').post(function (req, res) {
 });
 
 router.route('/deletedata/:id').delete(function (req, res) {
-    Data.findByIdAndRemove({_id: req.params.id}, function (err, course) {
-        if (err) res.json(err);
+    Data.findByIdAndRemove({_id: req.params.id}, function (err, deleted) {
+        console.log("err: " + err);
+        console.log("course: " + deleted);
+        console.log(deleted===null);
+        if(deleted === null) res.status(404).send("Unable to remove, not found");
         else res.json('Successfully removed');
     });
 });
 
 router.route('/deleteuser/:id').delete(function (req, res) {
     User.findByIdAndRemove({_id: req.params.id}, function(err, user){
-        if(err) res.json(err);
+        console.log(err!=null);
+        if(err != null) res.status(404).send("Unable to remove, not found");
         else res.json('Successfully removed');
     });
+});
+
+router.get('/data/deleted', function (req, res) {
+    console.log("deleted");
+    res.render('datadeleted', {title:"RestMyCode_2.0"});
 });
 
 module.exports = router;

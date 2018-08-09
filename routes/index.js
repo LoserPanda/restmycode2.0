@@ -33,4 +33,5 @@ router.get('/delete/:id', function(req, res, next) {
 router.get('/delete/', function(req, res, next) {
     res.render('delete', { title: 'RestMyCode_2.0', id: req.query.id});
 });
+
 module.exports = router;
