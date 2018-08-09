@@ -44,11 +44,12 @@ router.get('/:id', function (req, res) {
 });
 
 router.get('/comment/:id', function (req, res) {
-    Comment.find().sort({}).exec(function (err, data) {
+    Comment.find({dataId : req.params.id}).sort({}).exec(function (err, data) {
         console.log(data);
         res.json(data);
     });
-    // Comment.find({dataId: req.params.id}).toArray().then((result) => {
+
+    // Comment.find({dataId : req.params.id}).toArray().then((result) => {
     //     console.log(res);
     //     res.json(result);
     // })
@@ -77,7 +78,7 @@ router.post('/data', (req, res) => {
     });
     data.save()
         .then(data => {
-            res.status(200).redirect("/");
+            res.status(200).redirect("/users");
         })
         .catch(err => {
             res.status(400).send('unable to save the data into database');
@@ -129,7 +130,7 @@ router.post('/signin', (req, res) => {
 router.post('/comment', (req, res) => {
     var id = req.body.dataId;
     console.log(req.body.dataId);
-    const comment = new Comment({dataId: req.body.dataId, comment: req.body.comment});
+    const comment = new Comment(req.body);
     comment.save()
         .then(data => {
             res.status(200).redirect("/read/" + id);

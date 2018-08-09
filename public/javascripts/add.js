@@ -9,21 +9,21 @@ function addTagToArray() {
     $('#helptagsid').val('');
 }
 
-function setIdToLocalStorage(id){
-    localStorage.setItem("id",JSON.stringify(id));
+function setIdToLocalStorage(id) {
+    localStorage.setItem("id", JSON.stringify(id));
 
 }
 
-function removeTagFromArray(param){
+function removeTagFromArray(param) {
     console.log(param.parentNode);
     var row = param.parentNode.rowIndex;
     param.parentNode.style.display = "none";
-    tagArray.splice(row,1);
+    tagArray.splice(row, 1);
     $('#tagsid').val(tagArray);
     console.log(tagArray);
 }
 
-function removeData(){
+function removeData() {
     var uri = 'users/deletedata/' + JSON.parse(localStorage.getItem("id"));
     console.log("Tämä on uri: " + uri);
     $.ajax({
@@ -47,4 +47,8 @@ function userNameToLocalStorageUp() {
 
 function userNameToLocalStorageIn() {
     localStorage.setItem('username', $('#signinnameid').val());
+}
+
+function userNameFROMLocalStorageToCommentAuthor() {
+    $("#authorid").val(localStorage.getItem('username'));
 }
