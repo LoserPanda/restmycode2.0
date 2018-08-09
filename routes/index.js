@@ -27,7 +27,7 @@ router.get('/score/:id', function(req, res, next) {
     res.render('read', { title: 'RestMyCode_2.0', id: req.query.id});
 });
 
-router.get('/score', function(req, res, next) {
+router.get('/scoredown/:id', function(req, res, next) {
     res.render('read', { title: 'RestMyCode_2.0', id: req.query.id});
 });
 
