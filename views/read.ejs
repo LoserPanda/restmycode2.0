@@ -52,36 +52,38 @@
     </script>
 </head>
 <body>
-<h1><%= title %></h1>
+<header>
+    <% include partials/header %>
+</header>
 <p>Read Page</p>
 <table id="readtable">
     <tr>
-        <th class="readtableleft">Title:</th>
-        <th class="readtableright"><h2 id="readtitleid"></h2></th>
+        <td class="readtableleft">Title:</td>
+        <td class="readtableright"><h2 id="readtitleid"></h2></td>
     </tr>
     <tr>
-        <th class="readtableleft">Description:</th>
-        <th class="readtableright"><p id="readdescriptid"></p></th>
+        <td class="readtableleft">Description:</td>
+        <td class="readtableright"><p id="readdescriptid"></p></td>
     </tr>
     <tr>
-        <th class="readtableleft">Language:</th>
-        <th class="readtableright"><p id="readlangid"></p></th>
+        <td class="readtableleft">Language:</td>
+        <td class="readtableright"><p id="readlangid"></p></td>
     </tr>
     <tr>
-        <th class="readtableleft">Author:</th>
-        <th class="readtableright"><p id="readauthorid"></p></th>
+        <td class="readtableleft">Author:</td>
+        <td class="readtableright"><p id="readauthorid"></p></td>
     </tr>
     <tr>
-        <th class="readtableleft">Code:</th>
-        <th class="readtableright"><p id="readcodeid"></p></th>
+        <td class="readtableleft">Code:</td>
+        <td class="readtableright"><p id="readcodeid"></p></td>
     </tr>
     <tr>
-        <th class="readtableleft">Tags:</th>
-        <th class="readtableright"><p id="readtagsid"></p></th>
+        <td class="readtableleft">Tags:</td>
+        <td class="readtableright"><p id="readtagsid"></p></td>
     </tr>
     <tr>
-        <th class="readtableleft">Date:</th>
-        <th class="readtableright"><p id="readdateid"></p></th>
+        <td class="readtableleft">Date:</td>
+        <td class="readtableright"><p id="readdateid"></p></td>
     </tr>
 </table>
 
