@@ -156,6 +156,12 @@ function sortTableByScoreAsc() {
     }
 }
 
+
+function logout() {
+    localStorage.removeItem('username');
+    window.location.href = "/";
+}
+
 function stopIrresponsi(x){
     var row = x.parentNode.parentNode.rowIndex;
     var author = document.getElementById('myTable').rows[row].cells[3].innerHTML;
@@ -165,7 +171,7 @@ function stopIrresponsi(x){
         window.location.href = '/update';
     }
 }
-function stopIrresponsiDel(x){
+function stopIrresponsiDel(x) {
     var row = x.parentNode.parentNode.rowIndex;
     var author = document.getElementById('myTable').rows[row].cells[3].innerHTML;
     if (author !== localStorage.getItem('username')) {
