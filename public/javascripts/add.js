@@ -155,7 +155,27 @@ function sortTableByScoreAsc() {
     }
 }
 
+
 function logout() {
     localStorage.removeItem('username');
-    window.location.href="/";
+    window.location.href = "/";
+}
+
+function stopIrresponsi(x){
+    var row = x.parentNode.parentNode.rowIndex;
+    var author = document.getElementById('myTable').rows[row].cells[3].innerHTML;
+    if (author !== localStorage.getItem('username')) {
+        alert('Not authorized!');
+    } else {
+        window.location.href = '/update';
+    }
+}
+function stopIrresponsiDel(x) {
+    var row = x.parentNode.parentNode.rowIndex;
+    var author = document.getElementById('myTable').rows[row].cells[3].innerHTML;
+    if (author !== localStorage.getItem('username')) {
+        alert('Not authorized!');
+    } else {
+        window.location.href = '/delete';
+    }
 }
