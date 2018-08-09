@@ -42,9 +42,10 @@ function removeData() {
 
 function search(){
     var tag = $('#tagsearch').val();
+    console.log("tag: " + tag);
     var lang = $('#selectedLang').val();
     var lahetettava = {};
-    if (tag!=null) lahetettava.tags=tag;
+    if (tag!='') lahetettava.tags=tag;
     if (lang!=='Any/Other') lahetettava.lang=lang;
     if (lahetettava!=={}) {
         $.ajax({
