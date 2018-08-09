@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="/javascripts/add.js"></script>
+    <% include partials/head %>
 </head>
 <body>
 <header>
     <% include partials/header %>
 </header>
 <p>Code Listing Page</p>
-<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/datedesc'"><img src="/images/sortdesc.png" alt="SWITCH"></button>
-<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/dateasc'"><img src="/images/sortasc.png" alt="SWITCH"></button>
+<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/datedesc'"><img
+            src="/images/sortdesc.png" alt="SWITCH"></button>
+<button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/dateasc'"><img
+            src="/images/sortasc.png" alt="SWITCH"></button>
 <table>
     <thead>
     <tr>
@@ -37,13 +36,19 @@
         <td><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></td>
         <!--<td><%= data[i].date %></td>-->
         <td>----</td>
-        <td><a href="/read/<%= data[i]._id%>"><img src="/images/read.png" alt="READ" onclick=setIdToLocalStorage('<%= data[i]._id%>')></a></td>
-        <td><a href="/update"><img src="/images/edit.png" alt="EDIT" onclick=setIdToLocalStorage('<%= data[i]._id%>')></a></td>
+        <td><a href="/read/<%= data[i]._id %>"><img src="/images/read.png" alt="READ"
+                                                    onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></td>
+        <td><a href="/update"><img src="/images/edit.png" alt="EDIT" onclick=setIdToLocalStorage('<%= data[i]._id %>')></a>
+        </td>
         <!--<th><a href="/update"><img src="/images/edit.png" alt="EDIT"></a></th>-->
-        <th><a href="/delete"><img src="/images/delete.png" alt="DELETE" onclick=setIdToLocalStorage('<%= data[i]._id%>')></a></th>
+        <th><a href="/delete"><img src="/images/delete.png" alt="DELETE"
+                                   onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></th>
     </tr>
     <% } %>
     </tbody>
 </table>
+<footer>
+    <% include partials/footer %>
+</footer>
 </body>
 </html>

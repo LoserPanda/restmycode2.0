@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include partials/head %>
 </head>
 <body>
 <header>
@@ -10,6 +9,8 @@
 </header>
 <h2>Poisto onnistui!</h2>
 <a href="/users">Palaa hakusivulle</a>
-
+<footer>
+    <% include partials/footer %>
+</footer>
 </body>
 </html>
