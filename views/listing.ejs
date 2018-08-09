@@ -8,47 +8,68 @@
     <% include partials/header %>
 </header>
 <p>Code Listing Page</p>
+<table>
+    <tbody>
+    <tr>
+        <td>Keywords</td>
+        <td><input id="tagsearch"></td>
+    </tr>
+    <tr>
+        <td>Programming language</td>
+        <td><select id="selectedLang"></select></td>
+    </tr>
+    </tbody>
+</table>
+<button onclick=search()>Filter</button>
 <button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/datedesc'"><img
             src="/images/sortdesc.png" alt="SWITCH"></button>
 <button class="sortbutton" type="button" onclick="window.location.href='http://localhost:3000/users/dateasc'"><img
             src="/images/sortasc.png" alt="SWITCH"></button>
-<table>
-    <thead>
-    <tr>
-        <th>TITLE</th>
-        <th>DESCRIPTION</th>
-        <th>LANGUAGE</th>
-        <th>AUTHOR</th>
-        <th>DATE</th>
-        <th>SCORE</th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% for(var i = 0; i < data.length; ++i) { %>
-    <tr>
-        <td><%= data[i].title %></td>
-        <td><%= data[i].descript %></td>
-        <td><%= data[i].lang %></td>
-        <td><%= data[i].author %></td>
-        <td><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></td>
-        <!--<td><%= data[i].date %></td>-->
-        <td><%= data[i].score %></td>
-        <td><a href="/read/<%= data[i]._id %>"><img src="/images/read.png" alt="READ"
-                                                    onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></td>
-        <td><a href="/update"><img src="/images/edit.png" alt="EDIT" onclick=setIdToLocalStorage('<%= data[i]._id %>')></a>
-        </td>
-        <!--<th><a href="/update"><img src="/images/edit.png" alt="EDIT"></a></th>-->
-        <th><a href="/delete"><img src="/images/delete.png" alt="DELETE"
-                                   onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></th>
-    </tr>
-    <% } %>
-    </tbody>
-</table>
+
+<button class="sort" data-sort="title">Titlesort</button>
+<div id='users'>
+    <table>
+        <thead>
+        <tr>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>LANGUAGE</th>
+            <th>AUTHOR</th>
+            <th>DATE</th>
+            <th>SCORE</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody class="list">
+        <% for(var i = 0; i < data.length; ++i) { %>
+        <tr>
+            <td class=""><%= data[i].title %></td>
+            <td class="descript"><%= data[i].descript %></td>
+            <td class="lang"><%= data[i].lang %></td>
+            <td class="author"><%= data[i].author %></td>
+            <!--<td><%= data[i].date.getDate() + "." + (data[i].date.getMonth() + 1) + "." + data[i].date.getFullYear() %></td>-->
+            <td class="date"><%= data[i].date.toLocaleString() %></td>
+            <td class="score"><%= data[i].score %></td>
+            <td>----</td>
+            <td><a href="/read/<%= data[i]._id %>"><img src="/images/read.png" alt="READ"
+                                                        onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></td>
+            <td><a href="/update"><img src="/images/edit.png" alt="EDIT"
+                                       onclick=setIdToLocalStorage('<%= data[i]._id %>')></a>
+            </td>
+            <!--<th><a href="/update"><img src="/images/edit.png" alt="EDIT"></a></th>-->
+            <td><a href="/delete"><img src="/images/delete.png" alt="DELETE"
+                                       onclick=setIdToLocalStorage('<%= data[i]._id %>')></a></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</div>
 <footer>
     <% include partials/footer %>
+    <script>initLangSelectList()</script>
 </footer>
 </body>
 </html>

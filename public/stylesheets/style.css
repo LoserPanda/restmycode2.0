@@ -81,3 +81,9 @@ thead {
   text-align: right;
   color: white;
 }
+
+#helptagstableid * {
+  padding: 1px;
+  margin-top: 0px;
+  /*border: none;*/
+}
