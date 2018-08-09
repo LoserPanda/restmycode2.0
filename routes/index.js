@@ -18,10 +18,9 @@ router.get('/update', function(req, res, next) {
     res.render('update', { title: 'RestMyCode_2.0', id: req.query.id});
 });
 
-
-router.get('/users/update/data/updated', function(req, res, next) {
-    res.render('dataupdated', { title: 'RestMyCode_2.0'});
-});
+// router.get('/users/update/data/updated', function(req, res, next) {
+//     res.render('users', { title: 'RestMyCode_2.0'});
+// });
 
 router.get('/score/:id', function(req, res, next) {
     res.render('read', { title: 'RestMyCode_2.0', id: req.query.id});
