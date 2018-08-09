@@ -4,3 +4,12 @@
     <a href="/users">Listing</a>
     <a href="/add">Add Code Snippet</a>
 </div>
+<div class="topnav">
+    <a id="tellUser" href="#"></a>
+    <a id="loginstatus" href="#" onclick="logout()">Logout</a>
+</div>
+<script>
+    function tellUser() {
+        document.getElementById('tellUser').innerHTML = "Logged in as " + localStorage.getItem('username');
+    }
+</script>
