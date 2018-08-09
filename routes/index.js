@@ -46,4 +46,8 @@ router.get('/delete/', function(req, res, next) {
     res.render('delete', { title: 'RestMyCode_2.0', id: req.query.id});
 });
 
+router.get('/login', function(req, res, next) {
+    res.render('login', { title: 'RestMyCode_2.0' });
+});
+
 module.exports = router;
