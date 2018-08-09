@@ -70,6 +70,22 @@
         });
     </script>
 
+    <script>$(function () {
+            var id = JSON.parse(localStorage.getItem("id"));
+            if (id != null) {
+                let uri = '/users/' + id;
+                console.log(uri);
+                $.getJSON(uri, function (data) {
+                    $("#readscoreid").val(data.score);
+                    console.log(data);
+                    var info = data._id;
+                    url = "/users/score/" + info;
+                    $("#formid").attr('action',url);
+                    console.log("Formin action: " + $("#formid").attr('action'));
+                });
+            }})
+    </script>
+
 </head>
 <body>
 <header>
