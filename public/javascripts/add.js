@@ -4,7 +4,7 @@ function addTagToArray() {
     let tagSuspection = $('#helptagsid').val().toString();
     tagArray.push(tagSuspection);
     console.log(tagArray);
-    $('<tr ><td>' + tagSuspection + '</td><td onclick=removeTagFromArray(this)><img src="/images/switch.png" ></td></tr>').addClass('deletetag').appendTo('#helptagstableid');
+    $('<tr ><td>' + tagSuspection + '</td><td onclick=removeTagFromArray(this)><img src="/images/deletetag.png" ></td></tr>').addClass('deletetag').appendTo('#helptagstableid');
     $('#tagsid').val(tagArray);
     $('#helptagsid').val('');
 }
