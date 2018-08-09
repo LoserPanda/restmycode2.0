@@ -112,13 +112,28 @@ router.post('/', (req, res) => {
 });
 
 router.post('/score/:id', (req, res) => {
-    console.log("score");
     Data.findById(req.params.id, function(err, data) {
         if (err)
             return next(new Error('Could not vote'));
         else {
             data.score = data.score +1 ;
-            console.log(data.score);
+            console.log("Muutokset hoidettu");
+            data.save(function(err,upodate) {
+                console.log(err);
+                console.log(upodate);
+                if (err) res.status(400).send("unable to update the score");
+                res.redirect("/read/" + req.params.id);
+            });
+        }
+    });
+});
+
+router.post('/scoredown/:id', (req, res) => {
+    Data.findById(req.params.id, function(err, data) {
+        if (err)
+            return next(new Error('Could not vote'));
+        else {
+            data.score = data.score -1 ;
             console.log("Muutokset hoidettu");
             data.save(function(err,upodate) {
                 console.log(err);
