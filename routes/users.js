@@ -84,7 +84,7 @@ router.route('/update/data/:id').post(function (req, res) {
             console.log("Muutokset hoidettu");
             data.save(function(err,upodate) {
                 if (err) res.status(400).send("unable to update the database");
-                res.json(upodate);
+                res.redirect("updated");
             });
         }
     });
