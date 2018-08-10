@@ -173,14 +173,14 @@ router.post('/signup', (req, res) => {
     function resolver(count) {
         if (count > 0) {
             console.log('Username exists.');
-            res.redirect("/");
+            res.redirect("/login");
             //TODO ilmoita käyttäjälle
         } else {
             //TODO ilmoita käyttäjälle ja kirjaudu sisään -> olet taalla
             console.log('Username and password added successfully!');
             data.save()
                 .then(data => {
-                    res.status(200).redirect("/");
+                    res.status(200).redirect("/login");
                 })
                 .catch(err => {
                     res.status(400).send('unable to save the user into database');
@@ -195,12 +195,12 @@ router.post('/signin', (req, res) => {
     function resolver(count) {
         if (count > 0) {
             console.log('Logged in successfully!');
-            res.redirect("/users");
+            res.redirect("/login");
             //TODO olet kirjautunut
         } else {
             console.log('Username or password incorrect!');
             //TODO et ole kirjautunut
-            res.redirect("/");
+            res.redirect("/login");
         }
     }
 

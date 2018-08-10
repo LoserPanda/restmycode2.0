@@ -32,10 +32,11 @@
     </script>
 </head>
 <body>
+<div id="container">
 <header>
     <% include partials/header %>
 </header>
-<p>Add Your Code Page</p>
+<h2>Add Code Snippet</h2>
 <form action="/users/data" method="POST">
     <div>
         <label for="titleid">Title</label>
@@ -60,19 +61,20 @@
     <div>
         <label for="helptagsid">Tags</label>
         <input onchange="addTagToArray()" type="text" placeholder="e.g. POST" name="helptags" id="helptagsid"/>
-        <div>ADD TAG</div>
+        <div class="submitbutton">ADD TAG</div>
         <table id="helptagstableid"></table>
     </div>
     <div>
         <input type="hidden" name="tags" id="tagsid"/>
     </div>
     <div>
-        <button type="submit">SUBMIT</button>
+        <button class="submitbutton" type="submit">SUBMIT</button>
     </div>
 </form>
 <footer>
     <% include partials/footer %>
 </footer>
 <script>initLangSelectAdd();</script>
+</div>
 </body>
 </html>

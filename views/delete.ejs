@@ -19,13 +19,10 @@
         })</script>
 </head>
 <body>
+<div id="container">
 <header>
     <% include partials/header %>
 </header>
-<p>Are you sure you wan't to delete this post?</p>
-<button id="cancel" onclick="window.location.href='http://localhost:3000/users'">Cancel</button>
-<button id="deletedata" onclick=removeData()>Delete</button>
-
 <table id="readtable">
     <tr><th class="readtableleft">Title:</th><th class="readtableright"><h2 id="deletetitleid"></h2></th></tr>
     <tr><th class="readtableleft">Description:</th><th class="readtableright"><p id="deletedescriptid"></p></th></tr>
@@ -35,8 +32,12 @@
     <tr><th class="readtableleft">Tags:</th><th class="readtableright"><p id="deletetagsid"></p></th></tr>
     <tr><th class="readtableleft">Date:</th><th class="readtableright"><p id="deletedateid"></p></th></tr>
 </table>
+<p>Are you sure you wan't to delete this post?</p>
+<button class="submitbutton" id="cancel" onclick="window.location.href='http://localhost:3000/users'">Cancel</button>
+<button class="submitbutton" id="deletedata" onclick=removeData()>Delete</button>
 <footer>
     <% include partials/footer %>
 </footer>
+</div>
 </body>
 </html>

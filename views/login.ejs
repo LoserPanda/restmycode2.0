@@ -3,15 +3,33 @@
 <head>
     <% include partials/head %>
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script>
+        $(document).ready(function () {
+            $(".hideform").hide();
+            $('h3').click(function () {
+                var $tamah2 = $(this).next('form');
+                $tamah2.toggle("slow", "swing");
+            });
+        });
+    </script>
+    <script>
+        // $(document).ready(function () {
+        //     if (localStorage.getItem('username') !== undefined) {
+        //         loggedIn();
+        //         console.log(localStorage.getItem('username') + "joi");
+        //     }
+        // });
+    </script>
 </head>
 <body>
+<div id="container">
 <header>
     <% include partials/header %>
 </header>
-<p>Login/Logout Page</p>
+<h2>Login/Logout</h2>
 <div id="signupid">
-    <h2>Sign up for the first time</h2>
-    <form action="/users/signup" method="POST">
+    <h3 class="opentoggle">Sign up for the first time</h3>
+    <form class="hideform" action="/users/signup" method="POST">
         <div>
             <label for="signupnameid">Name</label>
             <input type="text" name="name" id="signupnameid"/>
@@ -21,13 +39,13 @@
             <input type="password" name="password" id="signuppasswordid"/>
         </div>
         <div>
-            <button type="submit" onclick="userNameToLocalStorageUp()">SIGN UP</button>
+            <button class="submitbutton" type="submit" onclick="userNameToLocalStorageUp()">SIGN UP</button>
         </div>
     </form>
 </div>
 <div id="signinid">
-    <h2>Already a user? Sign in!</h2>
-    <form action="/users/signin" method="POST">
+    <h3 class="opentoggle">Already a user? Sign in!</h3>
+    <form class="hideform" action="/users/signin" method="POST">
         <div>
             <label for="signinnameid">Name</label>
             <input type="text" name="name" id="signinnameid"/>
@@ -37,21 +55,16 @@
             <input type="password" name="password" id="signinpasswordid"/>
         </div>
         <div>
-            <button type="submit" onclick="userNameToLocalStorageIn()">SIGN IN</button>
+            <button class="submitbutton" type="submit" onclick="userNameToLocalStorageIn()">SIGN IN</button>
         </div>
     </form>
 </div>
-<div>
-<h2 id="tellUser"></h2>
-    <script>
-            document.getElementById('tellUser').innerHTML = "Logged in as " + localStorage.getItem('username');
-    </script>
-    <div>
-        <button type="submit" onclick="userNameToLocalStorageIn()">LOGOUT</button>
-    </div>
+<div id="loggedInId">
+    <button class="submitbutton" type="submit" onclick="logout()">LOGOUT</button>
 </div>
 <footer>
     <% include partials/footer %>
 </footer>
+</div>
 </body>
 </html>

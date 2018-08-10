@@ -158,7 +158,7 @@ function sortTableByScoreAsc() {
 
 function logout() {
     localStorage.removeItem('username');
-    window.location.href = "/";
+    window.location.href = "/login";
 }
 
 function stopIrresponsi(x){

@@ -17,7 +17,7 @@
                     $("#readlangid").text(data.lang);
                     $("#readcodeid").text(data.code);
                     $("#readauthorid").text(data.author);
-                    $("#readtagsid").text(data.tags.toString().replace(",", ", "));
+                    $("#readtagsid").text(data.tags.toString().split(",").join(", "));
                     $("#readscoreid").text(data.score);
                     $("#readdateid").text(deitti + " " + timefromdate);
 
@@ -55,7 +55,7 @@
         tinymce.init({
             selector: '#readcodeid',
             theme: 'modern',
-            width: 800,
+            width: 600,
             height: 300,
             plugins: "codesample",
             codesample_languages: [
@@ -104,14 +104,15 @@
 
 </head>
 <body>
+<div id="container">
 <header>
     <% include partials/header %>
 </header>
-<p>Read Page</p>
+<h2>Read Code Snippet</h2>
 <table id="readtable">
     <tr>
         <td class="readtableleft">Title:</td>
-        <td class="readtableright"><h2 id="readtitleid"></h2></td>
+        <td class="readtableright"><h3 id="readtitleid"></h3></td>
     </tr>
     <tr>
         <td class="readtableleft">Description:</td>
@@ -142,9 +143,10 @@
         <td class="readtableright"><p id="readdateid"></p></td>
     </tr>
 </table>
-
-<form id="voteup" method="POST"><button id= "vup" type="submit"><img src="/images/thumbs-up.png"></button></form>
-<form id="votedown" method="POST"><button id= "vdown" type="submit"><img src="/images/thumb-down.png"></button></form>
+<div>
+<form class="inline" id="voteup" method="POST"><button class="whitebutton" id= "vup" type="submit"><img src="/images/thumbs-up.png"></button></form>
+<form class="inline" id="votedown" method="POST"><button class="whitebutton" id= "vdown" type="submit"><img src="/images/thumb-down.png"></button></form>
+</div>
 <!--id="formid"-->
 <!--class="readtableright"-->
 <table id="commentable">
@@ -163,7 +165,7 @@
         <label for="authorid">Author</label>
         <input type="text" name="authorname" id="authorid" readonly/>
 
-        <button type="submit">SUBMIT</button>
+        <button class="submitbutton" type="submit">SUBMIT</button>
     </div>
 
 </form>
@@ -171,4 +173,5 @@
     <% include partials/footer %>
 </footer>
 </body>
+</div>
 </html>

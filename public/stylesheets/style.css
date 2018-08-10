@@ -1,12 +1,12 @@
 * {
-  border: dotted blue 1px;
+  /*border: dotted blue 1px;*/
   margin: 5px;
   padding: 5px;
   font-family: Arial;
 }
 
 textarea {
-  width: 300px;
+  width: 600px;
   height: 200px;
 }
 
@@ -22,7 +22,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: red;
+  color: #006DF0;
 }
 
 a, img {
@@ -32,11 +32,17 @@ a, img {
 }
 
 tr:nth-child(even) {
-  background-color: #ddd;
+  /*background-color: #a9b7c6;*/
+}
+
+table * {
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 thead {
-  background-color: #006DF0;
+  background-color: #cc7832;
 }
 
 .sortbutton {
@@ -61,7 +67,8 @@ thead {
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #2b2b2b;
+  margin: 0;
 }
 
 .topnav a {
@@ -74,7 +81,7 @@ thead {
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #e8bf6a;
   color: black;
 }
 
@@ -87,4 +94,64 @@ thead {
   padding: 1px;
   margin-top: 0px;
   /*border: none;*/
+}
+
+.submitbutton {
+  background-color: #6a8759;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/*.submitbutton:hover {*/
+  /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+/*}*/
+
+h1 {
+  font-family: 'Rubik Mono One';
+  font-size: 50px;
+  color: #2b2b2b;
+}
+
+h2 {
+  font-family: 'Rubik Mono One';
+  font-size: 20px;
+  color: #2b2b2b;
+}
+/*#e8bf6a*/
+.opentoggle {
+  background-color:  #cc7832;
+  margin: 0;
+}
+
+.whitebutton {
+  background-color: white;
+  border: none;
+}
+
+input[type=text], select, #tagsearch, #authorSearch {
+  /*background-color: #e8bf6a;*/
+  border: 1px solid #ccc;
+}
+
+.inline {
+  display: inline;
+}
+
+.hovertable:hover {
+  background-color: #e8bf6a;
+}
+
+#container {
+  position: sticky;
+  width: 800px;
+  margin: auto;
+  max-width: 100%;
+  padding: 0;
 }

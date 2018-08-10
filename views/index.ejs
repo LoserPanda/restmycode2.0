@@ -5,18 +5,28 @@
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 </head>
 <body>
+<div id="container">
 <header>
     <% include partials/header %>
 </header>
 <div>
-    <h2>Welcome to <%= title %></h2>
-    <p>Have you ever had trouble to find a fully functioning code snippet from a previous project? What was the name of the directory of this and that? Where did I put it? These thoughts are something that pretty much every programmer faces during their career. How nice it would be to find just the right snippet, and fast, whenever you needed it again.</p>
-    <p><%= title %> is a place where code comes to have a new life. Here you can add and reuse code snippets of your liking. <%= title %> makes it easy to browse through, update and delete code you find reusable.</p>
-    <p>What's more, you can also go through and comment on code snippets other programmers have left for later use. <%= title %>'s upvoting function together wiht code snippet specific comments make it easier to assess the snippet at hand.</p>
-    <p>Best way to get started is to register as a new user. You can do it <a href="/login">here</a>. Happy browsing!</p>
+    <h2>Introduction</h2>
+    <h3>Welcome to <%= title %>!</h3>
+    <p>Have you ever had trouble to find a fully functioning code snippet from a previous project? What was the name of
+        the directory of this and that? Where did I put it? These thoughts are something that pretty much every
+        programmer faces during their career. How nice it would be to find just the right snippet, and fast, whenever
+        you needed it again.</p>
+    <p><%= title %> is a place where code comes to have a new life. Here you can add and reuse code snippets of your
+        liking. <%= title %> makes it easy to browse through, update and delete code you find reusable.</p>
+    <p>What's more, you can also go through and comment on code snippets other programmers have left for later
+        use. <%= title %>'s upvoting function together wiht code snippet specific comments make it easier to assess the
+        snippet at hand.</p>
+    <p>Best way to get started is to register as a new user. You can do it <a href="/login">here</a>. Happy browsing!
+    </p>
 </div>
 <footer>
     <% include partials/footer %>
 </footer>
+</div>
 </body>
 </html>
