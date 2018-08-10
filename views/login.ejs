@@ -12,14 +12,6 @@
             });
         });
     </script>
-    <script>
-        // $(document).ready(function () {
-        //     if (localStorage.getItem('username') !== undefined) {
-        //         loggedIn();
-        //         console.log(localStorage.getItem('username') + "joi");
-        //     }
-        // });
-    </script>
 </head>
 <body>
 <div id="container">
@@ -59,8 +51,13 @@
         </div>
     </form>
 </div>
+<div id="showUser" onchange="showUser()">
+<script >
+    $('<h3>Logged in as ' + localStorage.getItem('username').toString() + '</h3>').appendTo('#showUser');
+</script>
+</div>
 <div id="loggedInId">
-    <button class="submitbutton" type="submit" onclick="logout()">LOGOUT</button>
+    <button class="submitbutton" type="button" onclick="logout()">LOGOUT</button>
 </div>
 <footer>
     <% include partials/footer %>

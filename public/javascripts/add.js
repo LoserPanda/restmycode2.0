@@ -180,3 +180,18 @@ function stopIrresponsiDel(x) {
         window.location.href = '/delete';
     }
 }
+
+function stopIrresponsiAdd(){
+    if (localStorage.getItem('username') === null || localStorage.getItem('username')=== '') {
+        alert("Remember to log in first!");
+        window.location.href = '/login';
+
+    } else {
+        window.location.href = '/add';
+    }
+}
+//
+// function showUser() {
+//     // document.getElementById('showUser').innerText = localStorage.getItem('username');
+//     $('<p>' + localStorage.getItem('username').toString() + '</p>').appendTo('#showUser');
+// }
